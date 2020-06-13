@@ -1,0 +1,17 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "tuna",
+      "ingredients": [
+        "tuna",
+        "tomato",
+        "cheese",
+        "olives",
+        "bacon"
+      ],
+      "price": 1600,
+      "rating": 4.2
+    }
+  ]
+}
