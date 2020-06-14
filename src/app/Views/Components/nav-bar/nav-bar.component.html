@@ -1,7 +1,7 @@
 <div class="bs-example">
   <nav class="navbar navbar-expand-md navbar-light bg-light">
 
-    <div href="#" class="navbar-brand">Brand</div>
+    <div class="navbar-brand">Brand</div>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
@@ -9,8 +9,9 @@
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
       <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link active">Home</a>
-        <a href="#" class="nav-item nav-link">Profile</a>
+        <a href="#" class="nav-item nav-link active" routerLink="/" (click)="navigate($event)">Home</a>
+        <a href="#" class="nav-item nav-link" routerLink="/profile" (click)="navigate($event)">Profile</a>
+        <a href="#" class="nav-item nav-link" routerLink="/create-pizza" (click)="navigate($event)">Create own pizza</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
@@ -24,7 +25,9 @@
       <!--SEARCH NEEDS REWRITE-->
       <form class="form-inline">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <label>
+            <input type="text" class="form-control" placeholder="Search">
+          </label>
           <div class="input-group-append">
             <button type="button" class="btn btn-secondary"><i class="fa fa-search"></i></button>
           </div>
