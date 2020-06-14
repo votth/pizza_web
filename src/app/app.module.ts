@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { PageNotFoundComponent } from './httpErrors/page-not-found/page-not-found.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { NavBarComponent } from './Views/nav-bar/nav-bar.component';
+import { PageNotFoundComponent } from './Views/page-not-found/page-not-found.component';
+import { WelcomeComponent } from './Views/welcome/welcome.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     RouterModule.forRoot([
       { path: '', component: WelcomeComponent, pathMatch: 'full'},
       { path: '**', component: PageNotFoundComponent}
-    ])
+    ]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
