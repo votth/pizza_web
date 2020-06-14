@@ -1,10 +1,12 @@
 import {Pizza} from '../Models/Pizza';
-import {users} from '../HardDatabase/DatabaseHelper';
+import {DatabaseHelper} from '../HardDatabase/DatabaseHelper';
+import users = DatabaseHelper.users;
+import ingredients = DatabaseHelper.ingredients;
 
 export class PizzaService {
 
-  // az id alapján kiválasztott user bevásárlókosarában levő pizzák közül kiválaszt egyet a pizzaid alapján
   getPizzaById(userId: number, pizzaid: number): Pizza {
+
     let result: Pizza = new Pizza();
 
     users[userId].shoppingBasket.pizzas.forEach(value => {

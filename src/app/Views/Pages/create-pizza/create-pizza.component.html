@@ -1,1 +1,33 @@
-<p>create-pizza works!</p>
+<div class="container-sm ">
+  <h1 class="text-center">Welcome to pizza designer page</h1>
+  <h2 class="text-center">select the thickness of your pizza dough</h2>
+  <div class="row">
+    <button class="col-1 btn btn-secondary">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+
+    <button class="col-1 offset-10 btn btn-secondary" style="text-align: end">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
+      <div class="card px-2">
+        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
+        <h4 class="text-center p-2 border-info border">gluten free</h4>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
+      <div class="card px-2">
+        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
+        <h4 class="text-center p-2 border-info border">gluten free</h4>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
+      <div class="card px-2">
+        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
+        <h4 class="text-center p-2 border-info border">gluten free</h4>
+      </div>
+    </div>
+  </div>
+</div>
