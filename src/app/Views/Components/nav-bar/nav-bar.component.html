@@ -47,20 +47,19 @@
               <h5 class="modal-title">BEJELENKEZÉSI INFO.</h5>
             </div>
             <div class="modal-body">
-              <form>
+              <form #f="ngForm" ngNativeValidate>
                 <div class="form-group">
-                  <label for="emailInput">Email address</label>
-                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" [(ngModel)]="email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <label for="emailInput">E-mail cím</label>
+                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" [(ngModel)]="email" required/>
                 </div>
                 <div class="form-group">
-                  <label for="passwordInput">Password</label>
-                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password">
+                  <label for="passwordInput">Jelszó</label>
+                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password" required/>
                 </div>
                 <div class="row">
-                  <a class="col-4" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Register</a> 
-                  <div class="col-4"></div>
-                  <a class="col-4" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Forgot password</a> 
+                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a> 
+                  <div class="col-3"></div>
+                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a> 
                 </div>
               </form>
             </div>

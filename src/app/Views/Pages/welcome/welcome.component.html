@@ -22,39 +22,37 @@
                 <h5 class="modal-title">HÁZHOZSZÁLLITÁS INFO.</h5>
               </div>
               <div class="modal-body">
-                <form>
+                <form #f="ngForm" ngNativeValidate>
                   <div class="form-group">
                     <label for="inputAddress">Cím</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required/>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputCity">Város</label>
-                      <input type="text" class="form-control" id="inputCity" required>
+                      <input type="text" class="form-control" id="inputCity" required/>
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputState">Megye</label>
-                      <select id="inputState" class="form-control" required>
+                      <select id="inputState" class="form-control">
                         <option selected="">Válasz...</option>
                         <option>...</option>
                       </select>
                     </div>
                     <div class="form-group col-md-2">
                       <label for="inputZip">Zip</label>
-                      <input type="number" class="form-control" id="inputZip" required>
+                      <input type="number" class="form-control" id="inputZip" required/>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputPhoneNumber">Telefonszám</label>
-                    <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required>
+                    <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required/>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
-                <a href="#" routerLink="/menu" (click)="navigate($event)">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Menühez</button>
-                </a>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" routerLink="/menu" (click)="navigate($event)">Menühez</button>
               </div>
             </div>
           </div>
