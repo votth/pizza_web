@@ -77,11 +77,67 @@ export const drinks: Drink[] = [
   {
     id: 0,
     name: 'CocaCola',
-    price: 300
+    price: 300,
+    rating: 1
   },
   {
     id: 1,
     name: 'Sprite',
-    price: 280
+    price: 280,
+    rating: 3
+  },
+  {
+    id: 2,
+    name: 'Pepsi',
+    price: 300,
+    rating: 5
+  },
+  {
+    id: 14,
+    name: 'beer0',
+    price: 199.52,
+    rating: 2
+  },
+  {
+    id: 13,
+    name: 'beer1',
+    price: 520,
+    rating: 4.5
+  },
+  {
+    id: 444,
+    name: 'beer2',
+    price: 320,
+    rating: 3
+  },
+  {
+    id: 55,
+    name: 'beer3',
+    price: 370,
+    rating: 3.8
+  },
+  {
+    id: 12,
+    name: 'wine0',
+    price: 409,
+    rating: 3.2
+  },
+  {
+    id: 122,
+    name: 'wine1',
+    price: 213,
+    rating: 5
+  },
+  {
+    id: 132,
+    name: 'wine2',
+    price: 421,
+    rating: 4.1
+  },
+  {
+    id: 112,
+    name: 'wine3',
+    price: 521,
+    rating: 2
   }
 ];
