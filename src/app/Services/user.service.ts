@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
 import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
+import {stringify} from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,11 @@ export class UserService {
     users.push(this.user);
   }
 
+  loginUser(user: User) {
+    localStorage.setItem('loggedIn', JSON.stringify(true));
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+  }
+
   findUser(email: string, passwordHash: string): User {
     for (const user of users) {
       if (user.email === email && user.passwordHash === passwordHash) {
@@ -34,5 +40,7 @@ export class UserService {
     }
     return undefined;
   }
+
+
 
 }

@@ -13,6 +13,22 @@ export let users: User[] = [
     email: 'elliota@gmail.com',
     passwordHash: 'hashedpassword',
     shoppingBasket: new ShoppingBasket()
+  },
+  {
+    id: 1,
+    name: 'Tyrell Wellick',
+    nickName: 'megalomaniac',
+    email: 'tyrellw@ecorp.com',
+    passwordHash: 'hashedpassword2',
+    shoppingBasket: new ShoppingBasket()
+  },
+  {
+    id: 2,
+    name: 'Darlene Alderson',
+    nickName: 'hottie',
+    email: 'darling@gmail.com',
+    passwordHash: 'hashedpassword3',
+    shoppingBasket: new ShoppingBasket()
   }
 ];
 

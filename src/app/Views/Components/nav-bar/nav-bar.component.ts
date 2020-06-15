@@ -19,16 +19,17 @@ export class NavBarComponent implements OnInit {
   }
 
   validation(): void {
-    if (this.userService.findUser(this.email, this.password) !== undefined) {
+    const user = this.userService.findUser(this.email, this.password);
+    if (user !== undefined) {
       console.log('logged in as');
       console.log(this.email);
       console.log(this.password);
-      localStorage.setItem('loggedIn', JSON.stringify(true));
+      this.userService.loginUser(user);
     } else {
       console.log('not logged in, values: ');
       console.log(this.email);
       console.log(this.password);
-      sessionStorage.setItem('loggedIn', null);
+      localStorage.setItem('loggedIn', null);
     }
   }
 
