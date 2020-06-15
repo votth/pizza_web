@@ -57,8 +57,11 @@
                   <label for="passwordInput">Password</label>
                   <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password">
                 </div>
-                <a routerLink="['/routerPath']" data-dismiss="modal">Forgot password</a> 
-                
+                <div class="row">
+                  <a class="col-4" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Register</a> 
+                  <div class="col-4"></div>
+                  <a class="col-4" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Forgot password</a> 
+                </div>
               </form>
             </div>
             <div class="modal-footer">
