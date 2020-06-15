@@ -11,5 +11,8 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  navigate(page: Event) {
+    console.log(page.target);
+  }
 }
