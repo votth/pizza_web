@@ -2,6 +2,7 @@ import {User} from '../Models/Users';
 import {Ingredient} from '../Models/Ingredient';
 import {Drink} from '../Models/Drink';
 import {ShoppingBasket} from '../Models/ShoppingBasket';
+import {Md5} from 'ts-md5';
 
 // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
 export let users: User[] = [
@@ -11,7 +12,7 @@ export let users: User[] = [
     name: 'Elliot Alderson',
     nickName: 'Mr Robot',
     email: 'elliota@gmail.com',
-    passwordHash: 'hashedpassword',
+    passwordHash: Md5.hashStr('hashedpassword'),
     shoppingBasket: new ShoppingBasket()
   },
   {
@@ -19,7 +20,7 @@ export let users: User[] = [
     name: 'Tyrell Wellick',
     nickName: 'megalomaniac',
     email: 'tyrellw@ecorp.com',
-    passwordHash: 'hashedpassword2',
+    passwordHash: Md5.hashStr('hashedpassword2'),
     shoppingBasket: new ShoppingBasket()
   },
   {
@@ -27,7 +28,7 @@ export let users: User[] = [
     name: 'Darlene Alderson',
     nickName: 'hottie',
     email: 'darling@gmail.com',
-    passwordHash: 'hashedpassword3',
+    passwordHash: Md5.hashStr('hashedpassword3'),
     shoppingBasket: new ShoppingBasket()
   }
 ];

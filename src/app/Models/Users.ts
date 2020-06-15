@@ -5,6 +5,6 @@ export class User {
   name: string;
   nickName: string;
   email: string;
-  passwordHash: string;
+  passwordHash;
   shoppingBasket: ShoppingBasket;
 }

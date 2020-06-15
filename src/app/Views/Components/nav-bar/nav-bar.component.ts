@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {UserService} from '../../../Services/user.service';
+import {Md5} from 'ts-md5';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +10,7 @@ import {UserService} from '../../../Services/user.service';
 export class NavBarComponent implements OnInit {
 
   email = '';
-  password = '';
+  password;
 
   constructor(private userService: UserService) {
   }
@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
   }
 
   validation(): void {
+    this.password = Md5.hashStr(this.password);
     const user = this.userService.findUser(this.email, this.password);
     if (user !== undefined) {
       console.log('logged in as');
