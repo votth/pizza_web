@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './Views/Components/nav-bar/nav-bar.component';
@@ -10,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.component';
 import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './Guards/auth.guard';
+import {UserService} from './Services/user.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import {AuthGuard} from './Guards/auth.guard';
       { path: '**', component: PageNotFoundComponent},
     ]),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

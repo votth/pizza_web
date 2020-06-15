@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../Services/user.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    console.log(this.userService.users);
   }
-  
+
   navigate(page: Event) {
     console.log(page.target);
   }
