@@ -1,8 +1,20 @@
 import {User} from '../Models/Users';
 import {Ingredient} from '../Models/Ingredient';
 import {Drink} from '../Models/Drink';
+import {ShoppingBasket} from '../Models/ShoppingBasket';
 
-export let users: User[] = []; // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
+// a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
+export let users: User[] = [
+  // userek
+  {
+    id: 0,
+    name: 'Elliot Alderson',
+    nickName: 'Mr Robot',
+    email: 'elliota@gmail.com',
+    passwordHash: 'hashedpassword',
+    shoppingBasket: new ShoppingBasket()
+  }
+];
 
 // itt vannak a beégetett feltétek
 export const ingredients: Ingredient[] = [

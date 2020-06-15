@@ -11,7 +11,6 @@ export class WelcomeComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log(this.userService.users);
   }
 
   navigate(page: Event) {

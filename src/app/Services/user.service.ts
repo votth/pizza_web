@@ -1,29 +1,38 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from '../Models/Users';
-import {map} from 'rxjs/operators';
+import { User } from '../Models/Users';
+import { ShoppingBasket } from '../Models/ShoppingBasket';
+import { users } from '../HardDatabase/DatabaseHelper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  CACHE_KEY = 'httpCache';
-  users;
-  usersURL = 'assets/users.json';
+  user: User;
 
-  constructor(private http: HttpClient) {
-    this.users = this.getUsers();
-    this.users = this.users.subscribe(next => {localStorage[this.CACHE_KEY] = JSON.stringify(next); });
+  constructor() {
   }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersURL);
+  registerUser(name: string, nickName: string, email: string, passwordHash: string): void {
+    this.user = new User();
+    this.user.name = name;
+    this.user.nickName = nickName;
+    this.user.email = email;
+    this.user.passwordHash = passwordHash;
+    this.user.shoppingBasket = new ShoppingBasket();
+
+    users.push(this.user);
   }
 
-  initializeUsers(): void {
-
+  findUser(email: string, passwordHash: string): User {
+    for (const user of users) {
+      if (user.email === email && user.passwordHash === passwordHash) {
+        console.log(user);
+        console.log('found');
+        return user;
+      }
+    }
+    return undefined;
   }
 
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {UserService} from '../../../Services/user.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,14 +12,14 @@ export class NavBarComponent implements OnInit {
   email = '';
   password = '';
 
-  constructor(private router: Router) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
   }
 
   validation(): void {
-    if (this.email === 'test@test.hu' && this.password === 'test') {
+    if (this.userService.findUser(this.email, this.password) !== undefined) {
       console.log('logged in as');
       console.log(this.email);
       console.log(this.password);
