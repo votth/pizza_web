@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Webprog-Project"
+    }
+  },
+  "defaultProject": "Webprog-Project",
+  "cli": {
+    "analytics": false
+  }
 }

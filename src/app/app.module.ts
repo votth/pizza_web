@@ -3,14 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './Views/nav-bar/nav-bar.component';
-import { PageNotFoundComponent } from './Views/page-not-found/page-not-found.component';
-import { WelcomeComponent } from './Views/welcome/welcome.component';
-import { MealListComponent } from './Views/meal-list/meal-list.component';
-import { DrinkListComponent } from './Views/drink-list/drink-list.component';
-import { CurrencyHufPipe } from './Pipes/currency-huf.pipe';
-import {FormsModule} from '@angular/forms';
-import { FiveStarComponent } from './Views/five-star/five-star.component';
+import { NavBarComponent } from './Views/Components/nav-bar/nav-bar.component';
+import { PageNotFoundComponent } from './Views/Pages/page-not-found/page-not-found.component';
+import { WelcomeComponent } from './Views/Pages/welcome/welcome.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +18,17 @@ import { FiveStarComponent } from './Views/five-star/five-star.component';
     MealListComponent,
     DrinkListComponent,
     CurrencyHufPipe,
-    FiveStarComponent
+    FiveStarComponent,
+    CreatePizzaComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', component: WelcomeComponent, pathMatch: 'full'},
-      {path: '**', component: PageNotFoundComponent}
+      { path: '', component: WelcomeComponent, pathMatch: 'full'},
+      { path: 'create-pizza', component: CreatePizzaComponent},
+      { path: '**', component: PageNotFoundComponent},
     ]),
-    FormsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
