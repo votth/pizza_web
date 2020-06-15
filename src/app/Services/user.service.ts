@@ -13,6 +13,9 @@ export class UserService {
   constructor() {
   }
 
+  // Ez a service felel a userek kezeléséért.
+
+  // User regisztrálása az adatbázisba.
   registerUser(name: string, nickName: string, email: string, passwordHash: string): void {
     const idCount = users.length;
     this.user = new User();
@@ -26,11 +29,13 @@ export class UserService {
     users.push(this.user);
   }
 
+  // User login kezelés a GUARD-hoz.
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
   }
 
+  // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
     for (const user of users) {
       if (user.email === email && user.passwordHash === passwordHash) {

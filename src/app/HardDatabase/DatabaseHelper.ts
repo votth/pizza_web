@@ -6,7 +6,7 @@ import {Md5} from 'ts-md5';
 
 // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
 export let users: User[] = [
-  // userek
+  // userek (encrypted passwordökkel)
   {
     id: 0,
     name: 'Elliot Alderson',

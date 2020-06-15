@@ -18,8 +18,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // User validálása a login form inputjai alapján (+ tesztek miatt logolás).
   validation(): void {
-    this.password = Md5.hashStr(this.password);
+    this.password = Md5.hashStr(this.password); // input password encryptelése md5-tel.
     const user = this.userService.findUser(this.email, this.password);
     if (user !== undefined) {
       console.log('logged in as');
