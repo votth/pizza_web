@@ -9,6 +9,7 @@ import { WelcomeComponent } from './Views/Pages/welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.component';
 import {FormsModule} from '@angular/forms';
+import {AuthGuard} from './Guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {FormsModule} from '@angular/forms';
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: WelcomeComponent, pathMatch: 'full'},
-      { path: 'create-pizza', component: CreatePizzaComponent},
+      { path: 'create-pizza', component: CreatePizzaComponent, canActivate: [AuthGuard]},
       { path: '**', component: PageNotFoundComponent},
     ]),
     AppRoutingModule,
