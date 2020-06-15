@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,10 +8,27 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() {
+  email = '';
+  password = '';
+
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
+  }
+
+  validation(): void {
+    if (this.email === 'test@test.hu' && this.password === 'test') {
+      console.log('logged in as');
+      console.log(this.email);
+      console.log(this.password);
+      localStorage.setItem('loggedIn', JSON.stringify(true));
+    } else {
+      console.log('not logged in, values: ');
+      console.log(this.email);
+      console.log(this.password);
+      sessionStorage.setItem('loggedIn', null);
+    }
   }
 
   navigate(page: Event) {

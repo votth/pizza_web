@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './Views/Pages/page-not-found/page-not-fou
 import { WelcomeComponent } from './Views/Pages/welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.co
       { path: 'create-pizza', component: CreatePizzaComponent},
       { path: '**', component: PageNotFoundComponent},
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
