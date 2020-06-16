@@ -12,6 +12,8 @@ import { CreatePizzaComponent } from './Views/Pages/create-pizza/create-pizza.co
 import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './Guards/auth.guard';
 import {UserService} from './Services/user.service';
+import { RegisterComponent } from './Views/Pages/register/register.component';
+import { ResetPasswordComponent } from './Views/Pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,17 @@ import {UserService} from './Services/user.service';
     NavBarComponent,
     PageNotFoundComponent,
     WelcomeComponent,
-    CreatePizzaComponent
+    CreatePizzaComponent,
+    RegisterComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: WelcomeComponent, pathMatch: 'full'},
       { path: 'create-pizza', component: CreatePizzaComponent, canActivate: [AuthGuard]},
+      { path: 'register', component: RegisterComponent},
+      { path: 'reset-password', component: ResetPasswordComponent},
       { path: '**', component: PageNotFoundComponent},
     ]),
     AppRoutingModule,

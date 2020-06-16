@@ -1,0 +1,33 @@
+<div class="card-body-main">
+    <div class="card align-items-center">
+        <h2 class="h2 text-capitalize p-5">Regisztráció</h2>
+        <form #f="ngForm" ngNativeValidate>
+            <div class="form-group">
+                <label>Teljes név</label>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" name="registerFirstName" placeholder="Keresztnév" required/>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" name="registerLastName" placeholder="Vezetéknév" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="registerEmail">E-mail cím</label>
+              <input type="email" class="form-control" name="registerEmail" required/>
+            </div>
+            <div class="form-group">
+              <label for="registerPassword">Jelszó</label>
+              <input type="password" class="form-control" name="registerPassword" required/>
+            </div>
+            <div class="form-group">
+              <label for="registerPasswordAgain">Jelszó ismét</label>
+              <input type="password" class="form-control" name="registerPasswordAgain" required/>
+            </div>
+            <button type="submit" class="btn btn-primary">Regisztráció</button>
+        </form>
+        <br/><br/>
+    </div>
+
+</div>
