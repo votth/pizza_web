@@ -1,16 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../Services/user.service';
 
+import {AbstractListComponent} from '../../abstract-list/abstract-list.component';
+import {Pizza} from '../../../Models/Pizza';
+import {Drink} from '../../../Models/Drink';
+import {pizzas, drinks} from '../../../HardDatabase/DatabaseHelper';
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent extends AbstractListComponent<Pizza> implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) { 
+    super();
+  }
+
+  // sort by rating desc = trending
+  sortArray(): void {
+    this.filteredList.sort(((a, b) => b.rating - a.rating ));
+  
+  }
 
   ngOnInit(): void {
+    super.ngOnInit();
+    this.list = this.list.concat(pizzas);
+    this.filteredList = this.list;
+    this.sortArray();
   }
 
   navigate(page: Event) {

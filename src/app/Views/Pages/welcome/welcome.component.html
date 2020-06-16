@@ -60,77 +60,55 @@
       </div>
     </div>
     <br/>
+    
   </div>
   <br/>
+
   <div class="card align-items-center p-2">
 
     <div class="article">
-      <h5>Title</h5>
+      <h3>Title</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Excepturi dignissimos quam veritatis quae obcaecati voluptate facere enim voluptas,
         nobis ratione blanditiis et impedit cum maiores ad nam saepe iure repellendus.</p>
     </div>
 
+    <!-- Trending table -->
     <div class="card-table">
-      <h5 id="tableTitle">Trending</h5>
+      <h3 id="tableTitle">Trending</h3>
+      <!-- Pizza -->
+      <h4>Pizza</h4>
       <div class="card-deck">
-        <div class="card">
+        <div class="card" *ngFor="let item of filteredList | slice:0:3; let i=index">
           <img src="../../../../assets/images/pizza1.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../../../../assets/images/pizza2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../../../../assets/images/pizza3.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This card has even longer content than the first to show that equal height action.</p>
+            <h5 class="card-title">{{item.name | titlecase}}</h5>
+            <p class="card-text">        
+              <ng-container *ngFor="let ingredient of item.ingredientsId">
+                {{ingredient | ingredientById}},
+              </ng-container>
+            </p>
           </div>
         </div>
       </div>
 
       <br/>
-
+      <!-- Drink -->
+      <h4>Drink</h4>
       <div class="card-deck">
-        <div class="card">
+        <div class="card" *ngFor="let drink of filteredList">
           <img src="../../../../assets/images/pizza7.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../../../../assets/images/pizza5.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../../../../assets/images/pizza6.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This card has even longer content than the first to show that equal height action.</p>
+            <h5 class="card-title">{{drink.name | titlecase}}</h5>
+            <p class="card-text">{{drink.price | currencyHuf}}</p>
           </div>
         </div>
       </div>
-
-      <br/>
+      <br/><br/>
       <a href="#" class="btn btn-success" style="text-transform:uppercase" id="menuButton" routerLink="/menu" (click)="navigate($event)">Menühez</a>
     </div>
 
+    <!-- SpecialOffer table -->
     <div class="card-table">
       <h5 id="tableTitle">Special Offers</h5>
       <div class="card-deck">
@@ -163,7 +141,6 @@
       </div>
       <br/><br/>
     </div>
-
 
   </div>
 
