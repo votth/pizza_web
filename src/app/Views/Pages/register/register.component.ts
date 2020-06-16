@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Md5 } from 'ts-md5';
 import {UserService} from '../../../Services/user.service';
+import {NgForm} from '@angular/forms';
+import {User} from '../../../Models/Users';
 
 @Component({
   selector: 'app-register',
@@ -17,12 +19,21 @@ export class RegisterComponent implements OnInit {
   password;
   passwordagain;
 
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  registerClick(): void {
+  onSubmit(value: any) {
+    console.log(value);
+    this.firstname = value.registerFirstName;
+    this.lastname = value.registerLastName;
+    this.nickname = value.registerNickname;
+    this.email = value.registerEmail;
+    this.password = value.registerPassword;
+    this.passwordagain = value.registerPasswordAgain;
+
     this.fullname = this.firstname + ' ' + this.lastname;
     this.password = Md5.hashStr(this.password);
     this.passwordagain = Md5.hashStr(this.passwordagain);
