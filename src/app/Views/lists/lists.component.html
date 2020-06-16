@@ -1,14 +1,19 @@
-<div class="card-body">
+<div class="card-body m-auto">
 
-  <div class="btn-group">
-    <button [ngClass]="currPage === 'drinks' ? btnPassive : btnActive"
-            (click)="pageSwitch('pizzas')">Pizzas</button>
-    <button [ngClass]="currPage === 'pizzas' ? btnPassive : btnActive"
-            (click)="pageSwitch('drinks')">Drinks</button>
-  </div>
 
-  <div class="card align-items-center p-1 bg-primary">
-    <h1 class="h1 text-light p-3">{{pageTitle}}</h1>
+  <div class="card align-items-center welcome border-0">
+    <div class="bg-half-light" style="width:100%">
+      <div class="btn-group align-self-baseline">
+        <button [ngClass]="currPage === 'drinks' ? btnPassive : btnActive"
+                (click)="pageSwitch('pizzas')">Pizzas</button>
+        <button [ngClass]="currPage === 'pizzas' ? btnPassive : btnActive"
+                (click)="pageSwitch('drinks')">Drinks</button>
+      </div>
+    </div>
+
+    <div class="p-4 text-center">
+      <h1 class="h1 text-light bg-half-dark rounded p-2 pr-5 pl-5">{{pageTitle}}</h1>
+    </div>
   </div>
 
   <app-meal-list *ngIf="currPage == 'pizzas'"></app-meal-list>
