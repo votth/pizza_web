@@ -1,1 +1,61 @@
-<p>meal-list works!</p>
+<div class="card p-2 bg-light">
+  <div class="d-flex flex-md-row flex-column pt-2">
+
+    <div class="input-group">
+      <label>
+        <input type="text" class="form-control min-el-w" placeholder="Search.." [(ngModel)]="listFilter">
+      </label>
+    </div>
+
+    <div class="input-group">
+      <label>
+        <select class="form-control" [(ngModel)]="sortParam">
+          <option value="empty" selected disabled hidden>Choose here</option>
+          <option value="PAsc">Price Asc</option>
+          <option value="PDesc">Price Desc</option>
+          <option value="RAsc">Rating Low</option>
+          <option value="RDesc">Rating High</option>
+        </select>
+      </label>
+      <div class="input-group-append">
+        <button class="btn btn-primary form-control" (click)="sortArray(sortParam)">Sort</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr class="text-capitalize">
+      <th>id</th>
+      <th>name</th>
+      <th>price</th>
+      <th>dough</th>
+      <th>ingredients</th>
+      <th>rating</th>
+      <th>button</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of filteredList">
+      <th>{{item.id}}</th>
+      <td>{{item.name | titlecase}}</td>
+      <td>{{item.price | currencyHuf}}</td>
+      <td>{{item.dough}}</td>
+      <td>
+        <ng-container *ngFor="let ingredient of item.ingredientsId">
+          {{ingredient | ingredientById}},
+        </ng-container>
+      </td>
+      <td><app-five-star [rating]="item.rating" ></app-five-star></td>
+      <td>
+        <button class="btn btn-primary" (click)="buyItem(item.id)">
+          <i class="fa fa-shopping-cart pr-1"></i>Buy
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

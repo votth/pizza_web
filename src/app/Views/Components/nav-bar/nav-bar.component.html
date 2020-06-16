@@ -12,7 +12,6 @@
         <a href="#" class="nav-item nav-link active" routerLink="/" (click)="navigate($event)">Home</a>
         <a href="#" class="nav-item nav-link" routerLink="/menu" (click)="navigate($event)">Menü</a>
         <a href="#" class="nav-item nav-link" routerLink="/create-pizza" (click)="navigate($event)">Create own pizza</a>
-        <a href="#" class="nav-item nav-link" routerLink="/drinks" (click)="navigate($event)">Drink List</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
@@ -58,9 +57,9 @@
                   <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password" required/>
                 </div>
                 <div class="row">
-                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a> 
+                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a>
                   <div class="col-3"></div>
-                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a> 
+                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a>
                 </div>
               </form>
             </div>

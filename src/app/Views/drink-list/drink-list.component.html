@@ -1,10 +1,4 @@
-<div class="card-body">
-
-  <div class="card align-items-center p-1 bg-primary">
-      <h1 class="h1 text-light p-3">Drink List</h1>
-  </div>
-
-  <div class="card p-2 bg-light">
+ <div class="card p-2 bg-light">
     <div class="d-flex flex-md-row flex-column pt-2">
 
       <div class="input-group">
@@ -12,13 +6,6 @@
           <input type="text" class="form-control min-el-w" placeholder="Search.." [(ngModel)]="listFilter">
         </label>
       </div>
-<!--
-      <div class="input-group">
-        <h4 class="" *ngIf="listFilter">
-          Filtered by: {{listFilter}}
-        </h4>
-      </div>
--->
 
       <div class="input-group">
         <label>
@@ -50,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let drink of filteredDrinkList">
+      <tr *ngFor="let drink of filteredList">
         <th>{{drink.id}}</th>
         <td>{{drink.name | titlecase}}</td>
         <td>{{drink.price | currencyHuf}}</td>
@@ -64,5 +51,3 @@
       </tbody>
     </table>
   </div>
-
-</div>

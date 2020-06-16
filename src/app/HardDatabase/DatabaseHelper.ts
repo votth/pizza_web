@@ -2,6 +2,7 @@ import {User} from '../Models/Users';
 import {Ingredient} from '../Models/Ingredient';
 import {Drink} from '../Models/Drink';
 import {ShoppingBasket} from '../Models/ShoppingBasket';
+import {Pizza} from '../Models/Pizza';
 
 // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
 export let users: User[] = [
@@ -67,27 +68,27 @@ export const ingredients: Ingredient[] = [
     type: 'alap'
   },
   {
-    id: 4,
+    id: 5,
     name: 'tejfölös',
     price: 10,
     type: 'alap'
   },
   // tészta fajták
   {
-    id: 4,
+    id: 6,
     name: 'vastag',
     price: 10,
     type: 'tészta'
   },
   {
-    id: 4,
+    id: 7,
     name: 'vékony',
     price: 10,
     type: 'tészta'
   },
   // tészta típusok
   {
-    id: 4,
+    id: 8,
     name: 'gluténmentes',
     price: 10,
     type: 'tésztatípus'
@@ -168,4 +169,56 @@ export const drinks: Drink[] = [
     price: 521,
     rating: 2
   }
+];
+
+export const pizzas: Pizza[] = [
+  {
+    id: 501,
+    name: 'Pizzo uno',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 1500,
+    rating: 3.6
+  },
+  {
+    id: 502,
+    name: 'Fishy pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 2000,
+    rating: 4.1
+  },
+  {
+    id: 503,
+    name: 'Ananas pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 1999,
+    rating: 2.3
+  },
+  {
+    id: 504,
+    name: 'Ninja pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 1650,
+    rating: 2.7
+  },
+  {
+    id: 505,
+    name: 'Hungarian pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 1870,
+    rating: 5
+  },
+  {
+    id: 506,
+    name: 'Vietnamese pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [1, 2, 3],
+    price: 1800,
+    rating: 4.4
+  }
+
 ];
