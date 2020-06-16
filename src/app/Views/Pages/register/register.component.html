@@ -1,6 +1,11 @@
 <div class="card-body-main">
-    <div class="card align-items-center">
-        <h2 class="h2 text-capitalize p-5">Regisztráció</h2>
+    <div class="card align-items-center" id="welcome">
+        <h1 class="h1 text-capitalize p-5">Regisztráció</h1>
+        <br/><br/><br/><br/>
+    </div>
+    <br/>
+    <div class="card align-items-center p-2">
+        <br/>
         <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
             <div class="form-group">
                 <label>Teljes név</label>
@@ -19,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="registerEmail">E-mail cím</label>
-               <input type="email" class="form-control" id="registerEmail" name="registerEmail" ngModel #email="ngModel" required/>
+               <input type="email" class="form-control" id="registerEmail" name="registerEmail" placeholder="abc@xyz.com" ngModel #email="ngModel" required/>
             </div>
             <div class="form-group">
                 <label for="registerPassword">Jelszó</label>
@@ -31,7 +36,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Regisztráció</button>
         </form>
-        <br/><br/>
+        <br/>
     </div>
-
+    <br/>
 </div>

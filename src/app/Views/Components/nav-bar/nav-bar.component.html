@@ -50,11 +50,11 @@
               <form #f="ngForm" ngNativeValidate>
                 <div class="form-group">
                   <label for="emailInput">E-mail cím</label>
-                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" [(ngModel)]="email" required/>
+                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="abc@xyz.com" [(ngModel)]="email" required/>
                 </div>
                 <div class="form-group">
                   <label for="passwordInput">Jelszó</label>
-                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password" required/>
+                  <input type="password" class="form-control" id="passwordInput" name="password" [(ngModel)]="password" required/>
                 </div>
                 <div class="row">
                   <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a> 
