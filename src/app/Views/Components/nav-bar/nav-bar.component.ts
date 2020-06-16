@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../Services/user.service';
 import {Md5} from 'ts-md5';
 
@@ -18,9 +18,13 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // User validálása a login form inputjai alapján (+ tesztek miatt logolás).
-  validation(): void {
+  // Login lekezelése submit onClick-re (reworked)
+  onSubmit(value: any) {
+    this.email = value.email;
+    this.password = value.password;
+
     this.password = Md5.hashStr(this.password); // input password encryptelése md5-tel.
+
     const user = this.userService.findUser(this.email, this.password);
     if (user !== undefined) {
       console.log('logged in as');

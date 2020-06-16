@@ -2,23 +2,28 @@ import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
 import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
-import { Md5 } from 'ts-md5';
 
 @Injectable({
   providedIn: 'root'
 })
+
+// Ez a service felel a userek kezeléséért.
 export class UserService {
 
   user: User;
 
   constructor() {
+    // Backendről user lista inicializálás (ha még nincs).
+    if (!localStorage.getItem('users')) {
+      this.storeUsers(users);
+    }
   }
 
-  // Ez a service felel a userek kezeléséért.
-
-  // User regisztrálása az adatbázisba.
+  // User regisztrálása az adatbázisba, eltárolás.
   registerUser(name: string, nickName: string, email: string, passwordHash: string): void {
-    const idCount = users.length;
+    const userList = JSON.parse(localStorage.getItem('users')); // Tárolt lista lekérése.
+
+    const idCount = userList.length;
     this.user = new User();
     this.user.id = idCount;
     this.user.name = name;
@@ -27,12 +32,12 @@ export class UserService {
     this.user.passwordHash = passwordHash;
     this.user.shoppingBasket = new ShoppingBasket();
 
-    users.push(this.user);
-    console.log(users);
-    this.storeUsers();
+    userList.push(this.user); // Új user listához adása.
+
+    this.storeUsers(userList); // Frissült lista eltárolása.
   }
 
-  // User login kezelés a GUARD-hoz.
+  // User loggedI in kezelés a GUARD-hoz.
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -53,8 +58,9 @@ export class UserService {
     return undefined;
   }
 
-  storeUsers(): void {
-    localStorage.setItem('users', JSON.stringify(users));
+  // Userlista tároló
+  storeUsers(userList: User[]): void {
+    localStorage.setItem('users', JSON.stringify(userList));
   }
 
 }

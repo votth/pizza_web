@@ -47,27 +47,27 @@
               <h5 class="modal-title">BEJELENKEZÉSI INFO.</h5>
             </div>
             <div class="modal-body">
-              <form #f="ngForm" ngNativeValidate>
+              <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
                 <div class="form-group">
                   <label for="emailInput">E-mail cím</label>
-                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" [(ngModel)]="email" required/>
+                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" ngModel required/>
                 </div>
                 <div class="form-group">
                   <label for="passwordInput">Jelszó</label>
-                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password" required/>
+                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" ngModel required/>
                 </div>
                 <div class="row">
-                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a> 
+                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a>
                   <div class="col-3"></div>
-                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a> 
+                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+                  <a href="#">
+                    <button type="submit" class="btn btn-primary">Bejelenkezés</button>
+                  </a>
                 </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
-              <a href="#">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="validation()">Bejelenkezés</button>
-              </a>
             </div>
           </div>
         </div>
