@@ -12,6 +12,7 @@ import {MealListComponent} from './Views/meal-list/meal-list.component';
 import {CurrencyHufPipe} from './Pipes/currency-huf.pipe';
 import {FiveStarComponent} from './Views/five-star/five-star.component';
 import {DrinkListComponent} from './Views/drink-list/drink-list.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,13 @@ import {DrinkListComponent} from './Views/drink-list/drink-list.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { path: '', component: WelcomeComponent, pathMatch: 'full'},
-      { path: 'create-pizza', component: CreatePizzaComponent},
-      { path: '**', component: PageNotFoundComponent},
+      {path: '', component: WelcomeComponent, pathMatch: 'full'},
+      {path: 'create-pizza', component: CreatePizzaComponent},
+      {path: 'drinks', component: DrinkListComponent},
+      {path: '**', component: PageNotFoundComponent},
     ]),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
