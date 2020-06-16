@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
 import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
+import { Md5 } from 'ts-md5';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class UserService {
   constructor() {
   }
 
+  // Ez a service felel a userek kezeléséért.
+
+  // User regisztrálása az adatbázisba.
   registerUser(name: string, nickName: string, email: string, passwordHash: string): void {
     const idCount = users.length;
     this.user = new User();
@@ -24,15 +28,22 @@ export class UserService {
     this.user.shoppingBasket = new ShoppingBasket();
 
     users.push(this.user);
+    console.log(users);
+    this.storeUsers();
   }
 
+  // User login kezelés a GUARD-hoz.
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
   }
 
+  // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
-    for (const user of users) {
+    const userlist: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userlist) {
+      console.log('checking:');
+      console.log(user);
       if (user.email === email && user.passwordHash === passwordHash) {
         console.log(user);
         console.log('found');
@@ -40,6 +51,10 @@ export class UserService {
       }
     }
     return undefined;
+  }
+
+  storeUsers(): void {
+    localStorage.setItem('users', JSON.stringify(users));
   }
 
 }

@@ -36,7 +36,7 @@ import { ResetPasswordComponent } from './Views/Pages/reset-password/reset-passw
     ]),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

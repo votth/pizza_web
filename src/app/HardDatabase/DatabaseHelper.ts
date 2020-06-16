@@ -5,13 +5,13 @@ import {ShoppingBasket} from '../Models/ShoppingBasket';
 
 // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
 export let users: User[] = [
-  // userek
+  // userek (encrypted passwordökkel)
   {
     id: 0,
     name: 'Elliot Alderson',
     nickName: 'Mr Robot',
     email: 'elliota@gmail.com',
-    passwordHash: 'hashedpassword',
+    passwordHash: 'fdc94bf9572d3d1dc136a73a75c05666',
     shoppingBasket: new ShoppingBasket()
   },
   {
@@ -19,7 +19,7 @@ export let users: User[] = [
     name: 'Tyrell Wellick',
     nickName: 'megalomaniac',
     email: 'tyrellw@ecorp.com',
-    passwordHash: 'hashedpassword2',
+    passwordHash: '9c848603ec6776355e3401cab09970d4',
     shoppingBasket: new ShoppingBasket()
   },
   {
@@ -27,7 +27,7 @@ export let users: User[] = [
     name: 'Darlene Alderson',
     nickName: 'hottie',
     email: 'darling@gmail.com',
-    passwordHash: 'hashedpassword3',
+    passwordHash: '401bfea1b1151e3eea85bfd333700b60',
     shoppingBasket: new ShoppingBasket()
   }
 ];
