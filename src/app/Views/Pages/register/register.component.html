@@ -6,30 +6,30 @@
                 <label>Teljes név</label>
                 <div class="form-row">
                     <div class="col">
-                        <input type="text" class="form-control" name="registerFirstName" placeholder="Keresztnév" required/>
+                      <input type="text" class="form-control" name="registerFirstName" placeholder="Keresztnév" [(ngModel)]="firstname" required/>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" name="registerLastName" placeholder="Vezetéknév" required/>
+                      <input type="text" class="form-control" name="registerLastName" placeholder="Vezetéknév" [(ngModel)]="lastname" required/>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="registerNickname">Becenév</label>
-                <input for="registerNickname" class="form-control" name="registerNickname" placeholder="Becenév" required>
+                <input type="text" class="form-control" id="registerNickname" name="registerNickname" placeholder="Becenév" [(ngModel)]="nickname" required>
             </div>
             <div class="form-group">
                 <label for="registerEmail">E-mail cím</label>
-               <input type="email" class="form-control" name="registerEmail" required/>
+               <input type="email" class="form-control" id="registerEmail" name="registerEmail" [(ngModel)]="email" required/>
             </div>
             <div class="form-group">
                 <label for="registerPassword">Jelszó</label>
-                <input type="password" class="form-control" name="registerPassword" required/>
+                <input type="password" class="form-control" id="registerPassword" name="registerPassword" [(ngModel)]="password" required/>
             </div>
             <div class="form-group">
                <label for="registerPasswordAgain">Jelszó ismét</label>
-                <input type="password" class="form-control" name="registerPasswordAgain" required/>
+                <input type="password" class="form-control" id="registerPasswordAgain" name="registerPasswordAgain" [(ngModel)]="passwordagain" required/>
             </div>
-            <button type="submit" class="btn btn-primary">Regisztráció</button>
+            <button type="submit" class="btn btn-primary" (click)="registerUser()">Regisztráció</button>
         </form>
         <br/><br/>
     </div>

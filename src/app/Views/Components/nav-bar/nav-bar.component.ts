@@ -9,7 +9,7 @@ import {Md5} from 'ts-md5';
 })
 export class NavBarComponent implements OnInit {
 
-  email = '';
+  email: string;
   password;
 
   constructor(private userService: UserService) {
