@@ -1,0 +1,53 @@
+ <div class="card p-2 bg-light">
+    <div class="d-flex flex-md-row flex-column pt-2">
+
+      <div class="input-group">
+        <label>
+          <input type="text" class="form-control min-el-w" placeholder="Search.." [(ngModel)]="listFilter">
+        </label>
+      </div>
+
+      <div class="input-group">
+        <label>
+          <select class="form-control" [(ngModel)]="sortParam">
+            <option value="empty" selected disabled hidden>Choose here</option>
+            <option value="PAsc">Price Asc</option>
+            <option value="PDesc">Price Desc</option>
+            <option value="RAsc">Rating Low</option>
+            <option value="RDesc">Rating High</option>
+          </select>
+        </label>
+        <div class="input-group-append">
+          <button class="btn btn-primary form-control" (click)="sortArray(sortParam)">Sort</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr class="text-capitalize">
+          <th>id</th>
+          <th>name</th>
+          <th>price</th>
+          <th>rating</th>
+          <th>button</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let drink of filteredList">
+        <th>{{drink.id}}</th>
+        <td>{{drink.name | titlecase}}</td>
+        <td>{{drink.price | currencyHuf}}</td>
+        <td><app-five-star [rating]="drink.rating" ></app-five-star></td>
+        <td>
+          <button class="btn btn-primary" (click)="buyItem(drink.id)">
+            <i class="fa fa-shopping-cart pr-1"></i>Buy
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

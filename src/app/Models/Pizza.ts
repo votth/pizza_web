@@ -2,6 +2,7 @@ export class Pizza {
   id: number;
   name: string;
   dough: string;
-  ingredients: string[];
+  ingredientsId: number[];
   price: number;
+  rating: number;
 }
