@@ -5,6 +5,6 @@ export class User {
   name: string;
   nickName: string;
   email: string;
-  passwordHash; // Nincs stringmegkötő az titkosítás miatt.
+  passwordHash: string;
   shoppingBasket: ShoppingBasket;
 }
