@@ -1,32 +1,28 @@
 <div class="container-sm ">
-  <h1 class="text-center">Welcome to pizza designer page</h1>
-  <h2 class="text-center">select the thickness of your pizza dough</h2>
+  <h1 class="text-center">{{headerText}}</h1>
+  <h2 class="text-center">{{phases[actualPhase].text}}</h2>
   <div class="row">
-    <button class="col-1 btn btn-secondary">
+    <button class="col-1 btn btn-secondary" (click)="PreviousPhase()">
       <i class="fa fa-chevron-left"></i>
     </button>
 
-    <button class="col-1 offset-10 btn btn-secondary" style="text-align: end">
+    <button class="col-1 offset-10 btn btn-secondary"  style="text-align: end" (click)="NextPhase()">
       <i class="fa fa-chevron-right"></i>
     </button>
   </div>
   <div class="row">
-    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
-      <div class="card px-2">
-        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
-        <h4 class="text-center p-2 border-info border">gluten free</h4>
+    <div class="col-12 col-md-4 p-2 ingredient-selector"
+         [style]="pizzaIngredientSelector.selected?'background-color: #111f45':'background-color: transparent'"
+         [id]="'ingredient-selector-'+pizzaIngredientSelector.ingredient.name"
+         (click)="SelectItem($event.target, pizzaIngredientSelector.ingredient.name)"
+         *ngFor="let pizzaIngredientSelector of phases[actualPhase].pizzaIngredientSelectors"
+    >
+      <div class="card px-2" *ngIf="pizzaIngredientSelector.ingredient.type !== 'finish'">
+        <img class="img-fluid" src="{{pizzaIngredientSelector.ingredient.picture}}" alt="">
+        <h4 class="text-center p-2 border-info border">{{pizzaIngredientSelector.ingredient.name}}</h4>
       </div>
-    </div>
-    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
-      <div class="card px-2">
-        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
-        <h4 class="text-center p-2 border-info border">gluten free</h4>
-      </div>
-    </div>
-    <div class="col-12 col-md-4 p-2" (click)="SelectItem($event.target)">
-      <div class="card px-2">
-        <img class="img-fluid" src="https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png" alt="">
-        <h4 class="text-center p-2 border-info border">gluten free</h4>
+      <div class="card px-2" *ngIf="pizzaIngredientSelector.ingredient.type === 'finish'">
+        <label for="pizza-quantity">db</label><input id="pizza-quantity" type="number" max="20" min="1" value="1">
       </div>
     </div>
   </div>

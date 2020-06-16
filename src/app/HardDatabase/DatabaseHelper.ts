@@ -86,7 +86,7 @@ export const ingredients: Ingredient[] = [
     id: 6,
     name: 'vastag',
     price: 10,
-    picture: 'https://lh3.googleusercontent.com/proxy/eRifIrmlCB3lVj4chbe_mbcCEOsmpZPsFplapHmtmTkoo9FBbQpHH4RiUT1WzFf8A1qoRTUjupN13KsEhfRdn3nKLcbGCXJIiLQ7zk6Y7_wQeGN74uwop7F4AjKtng',
+    picture: 'https://www.2brotherspizza.co.za/sites/all/themes/twobrothers/images/thick-pizza-base.png',
     type: 'doughThickness'
   },
   {
@@ -101,28 +101,28 @@ export const ingredients: Ingredient[] = [
     id: 6,
     name: '28',
     price: 10,
-    picture: '',
+    picture: 'https://lh3.googleusercontent.com/proxy/QBOJ4mdIVyyTGQQ-xm-TKZ6hAHuBWfyiTaeEEmxINTGfRdsh9SPsFIpRekauOYecxAE3AZ_iUC0pSf4ECS-Qn6hN6813hUpo0q5tN0OsJaoq0Y141QlxboCwWhAn6GfNgxn8',
     type: 'size'
   },
   {
     id: 6,
     name: '32',
     price: 10,
-    picture: '',
+    picture: 'https://cdn.pixabay.com/photo/2012/04/23/15/32/number-38545_960_720.png',
     type: 'size'
   },
   {
     id: 6,
     name: '45',
     price: 10,
-    picture: '',
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Augsburg_Bus_45.svg',
     type: 'size'
   },
   {
     id: 6,
     name: '60',
     price: 10,
-    picture: '',
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Number_60.png',
     type: 'size'
   },
   // tészta típusok
@@ -137,7 +137,7 @@ export const ingredients: Ingredient[] = [
     id: 8,
     name: 'szénhidrátcsökkentett',
     price: 10,
-    picture: 'https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png',
+    picture: 'https://nano-fit.com/wp-content/uploads/2018/10/icon-testsulycsokkentes-01.png',
     type: 'doughType'
   }
 ];
