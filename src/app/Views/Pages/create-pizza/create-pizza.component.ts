@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pizza} from '../../../Models/Pizza';
 import {Ingredient} from '../../../Models/Ingredient';
-import {DatabaseHelper} from '../../../HardDatabase/DatabaseHelper';
-import ingredients = DatabaseHelper.ingredients;
+import {ingredients} from '../../../HardDatabase/DatabaseHelper';
 
 @Component({
   selector: 'app-create-pizza',
@@ -17,7 +16,6 @@ export class CreatePizzaComponent implements OnInit {
   nextPhase = 0;
 
   constructor() {
-
   }
 
   ngOnInit(): void {
@@ -29,13 +27,13 @@ export class CreatePizzaComponent implements OnInit {
     if (this.nextPhase !== 0) {
       // végigmegyünk a gombokon és a kijelölés alapján betöltjük a pizzába az elemeket
       this.pizzaIngredientSelectors.forEach(pizzaIngredientSelector => {
-        if (pizzaIngredientSelector.selected) {
-          if (!this.pizza.ingredients.find(value => pizzaIngredientSelector.ingredient)) {
+        if (pizzaIngredientSelector.selected) { // ha a gomb engedélyezve van
+          if (!this.pizza.ingredients.find(() => pizzaIngredientSelector.ingredient)) {
             // ha nincs benne beletöltjük
             this.pizza.ingredients.push(pizzaIngredientSelector.ingredient);
           }
-        } else {
-          const pizzaIndex = this.pizza.ingredients.findIndex(value => pizzaIngredientSelector.ingredient);
+        } else { // ha a gomb nincs engedélyezve
+          const pizzaIndex = this.pizza.ingredients.findIndex(() => pizzaIngredientSelector.ingredient);
           if (pizzaIndex !== -1) {
             // ha benne van kitöröljük
             this.pizza.ingredients.splice(pizzaIndex);

@@ -1,7 +1,5 @@
 import {Pizza} from '../Models/Pizza';
-import {DatabaseHelper} from '../HardDatabase/DatabaseHelper';
-import users = DatabaseHelper.users;
-import ingredients = DatabaseHelper.ingredients;
+import {users} from '../HardDatabase/DatabaseHelper';
 
 export class PizzaService {
 
