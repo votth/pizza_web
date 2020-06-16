@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
       <div class="navbar-nav">
         <a href="#" class="nav-item nav-link active" routerLink="/" (click)="navigate($event)">Home</a>
-        <a href="#" class="nav-item nav-link" routerLink="/profile" (click)="navigate($event)">Profile</a>
+        <a href="#" class="nav-item nav-link" routerLink="/menu" (click)="navigate($event)">Menü</a>
         <a href="#" class="nav-item nav-link" routerLink="/create-pizza" (click)="navigate($event)">Create own pizza</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
@@ -35,8 +35,42 @@
       </form>
       <!--LOGIN BUTTON-->
       <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link">Login</a>
+        <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginCenter">
+            Bejelenkezik
+        </a>
       </div>
+
+      <div class="modal fade" id="loginCenter">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">BEJELENKEZÉSI INFO.</h5>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="emailInput">Email address</label>
+                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter email" [(ngModel)]="email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="passwordInput">Password</label>
+                  <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Password" [(ngModel)]="password">
+                </div>
+                <a routerLink="['/routerPath']" data-dismiss="modal">Forgot password</a> 
+                
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+              <a href="#">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="validation()">Bejelenkezés</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </nav>
 </div>

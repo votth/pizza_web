@@ -1,9 +1,184 @@
-<div class="card-body">
-  <div class="card align-items-center">
-    <h1 class="h1 text-capitalize p-5">welcome</h1>
+<div class="card-body-main">
+  <div class="card align-items-center" id="welcome">
+    <h1 class="h1 text-capitalize p-5">Üdvözöljük!</h1>
+
+    <!-- Promotion page -->
+
+    <h4>RENDELJ TŐLÜNK:</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">SORREND NÉLKÜLI</button>
+      </div>
+
+      <div class="col-md-6">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter">
+          HÁZHOZSZÁLLITÁS
+        </button>
+
+        <div class="modal fade" id="houseDeliveryCenter">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">HÁZHOZSZÁLLITÁS INFO.</h5>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="inputAddress">Cím</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">Város</label>
+                      <input type="text" class="form-control" id="inputCity" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Megye</label>
+                      <select id="inputState" class="form-control" required>
+                        <option selected="">Válasz...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputZip">Zip</label>
+                      <input type="number" class="form-control" id="inputZip" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPhoneNumber">Telefonszám</label>
+                    <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+                <a href="#" routerLink="/menu" (click)="navigate($event)">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Menühez</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <p>some background picture with Promotion info</p>
   </div>
+  <br/>
   <div class="card align-items-center p-2">
-    <h5 class="h5 text-capitalize">website under construction</h5>
-    <div class="fa fa-warning fa-5x"></div>
+
+    <div class="article">
+      <h5>Title</h5>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Excepturi dignissimos quam veritatis quae obcaecati voluptate facere enim voluptas,
+        nobis ratione blanditiis et impedit cum maiores ad nam saepe iure repellendus.</p>
+    </div>
+
+    <div class="card-table">
+      <h5 id="tableTitle">Trending</h5>
+      <div class="card-deck">
+        <div class="card">
+          <img src="../../../../assets/images/pizza1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="../../../../assets/images/pizza2.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="../../../../assets/images/pizza3.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="card-deck">
+        <div class="card">
+          <img src="../../../../assets/images/pizza7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="../../../../assets/images/pizza5.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="../../../../assets/images/pizza6.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <a href="#" class="btn btn-success" style="text-transform:uppercase" id="menuButton" routerLink="/menu" (click)="navigate($event)">Menühez</a>
+    </div>
+
+    <div class="card-table">
+      <h5 id="tableTitle">Special Offers</h5>
+      <div class="card-deck">
+        <div class="card">
+          <img src="#" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
+          <a href="#" class="btn btn-primary" style="text-transform:uppercase" id="addOffer">Add to cart</a>
+        </div>
+        <div class="card">
+          <img src="#" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <a href="#" class="btn btn-primary" style="text-transform:uppercase" id="addOffer">Add to cart</a>
+        </div>
+        <div class="card">
+          <img src="#" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <a href="#" class="btn btn-primary" style="text-transform:uppercase" id="addOffer">Add to cart</a>
+        </div>
+      </div>
+      <br/><br/>
+    </div>
+
+
   </div>
+
+  <br>
+
+  <div class="card align-items-center p-3">
+    <footer>
+      <p>This is the footer</p>
+    </footer>
+  </div>
+
 </div>
