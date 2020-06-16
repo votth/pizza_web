@@ -13,15 +13,22 @@ export class ListsComponent implements OnInit {
   btnPassive = 'btn btn-dark';
 
   pageSwitch(param: string): void{
-    this.currPage = param === 'pizzas' ? 'pizzas' : this.currPage;
-    this.currPage = param === 'drinks' ? 'drinks' : this.currPage;
-    console.log(this.currPage);
+    switch (param) {
+      case 'pizzas':
+        this.currPage = 'pizzas';
+        this.pageTitle = 'Pizza List';
+        break;
+      case 'drinks':
+        this.currPage = 'drinks';
+        this.pageTitle = 'Drink List';
+        break;
+    }
   }
 
   constructor() { }
 
   ngOnInit(): void {
-    this.currPage = 'pizzas';
+    this.pageSwitch('pizzas');
   }
 
 }

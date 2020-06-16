@@ -9,6 +9,7 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
   list: T[] = [];
   filteredList: T[] = [];
   sortParam: string;
+  currSortParam: string;
 
   get listFilter(): string {
     return this._listFilter;
@@ -17,9 +18,11 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
   set listFilter(value: string) {
     this._listFilter = value;
     this.filteredList = this.listFilter ? this.performFilter(this.listFilter) : this.list;
+    this.sortArray(this.currSortParam);
   }
 
   sortArray(param: string): void{
+    this.currSortParam = param;
     switch (param) {
       case 'PAsc':
         this.filteredList.sort(((a, b) => a.price - b.price ));

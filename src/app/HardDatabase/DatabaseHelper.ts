@@ -200,7 +200,7 @@ export const pizzas: Pizza[] = [
     id: 504,
     name: 'Ninja pizza',
     dough: 'Extra thicc',
-    ingredientsId: [1, 2, 3],
+    ingredientsId: [1, 7, 3],
     price: 1650,
     rating: 2.7
   },
@@ -208,17 +208,25 @@ export const pizzas: Pizza[] = [
     id: 505,
     name: 'Hungarian pizza',
     dough: 'Extra thicc',
-    ingredientsId: [1, 2, 3],
+    ingredientsId: [1, 5, 3],
     price: 1870,
-    rating: 5
+    rating: 3.5
   },
   {
     id: 506,
     name: 'Vietnamese pizza',
     dough: 'Extra thicc',
-    ingredientsId: [1, 2, 3],
+    ingredientsId: [1, 0, 3],
     price: 1800,
-    rating: 4.4
+    rating: 3.5
+  },
+  {
+    id: 507,
+    name: 'Somogyi pizza',
+    dough: 'Extra thicc',
+    ingredientsId: [2, 2, 2, 2, 2],
+    price: 2200,
+    rating: 5
   }
 
 ];

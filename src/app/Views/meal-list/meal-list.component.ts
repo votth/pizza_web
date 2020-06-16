@@ -14,6 +14,18 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
     super();
   }
 
+  sortArray(param: string): void {
+    super.sortArray(param);
+    switch (param) {
+      case 'IdAsc':
+        this.filteredList.sort(((a, b) => a.id - b.id ));
+        break;
+        case 'IdDesc':
+        this.filteredList.sort(((a, b) => b.id - a.id ));
+        break;
+    }
+  }
+
   ngOnInit(): void {
     super.ngOnInit();
     this.list = this.list.concat(pizzas);
