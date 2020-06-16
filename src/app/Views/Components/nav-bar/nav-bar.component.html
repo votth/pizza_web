@@ -62,10 +62,15 @@
                   <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+                  <button type="button" #closeButton class="btn btn-secondary" data-dismiss="modal">Bezár</button>
                   <a href="#">
                     <button type="submit" class="btn btn-primary">Bejelenkezés</button>
                   </a>
+                </div>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="text-center" *ngIf="errorChecker === true">Nem megfelelő felhasználói adatok!</p>
+                  </div>
                 </div>
               </form>
             </div>

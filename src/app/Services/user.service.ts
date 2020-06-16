@@ -45,11 +45,25 @@ export class UserService {
 
   // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
-    const userlist: User[] = JSON.parse(localStorage.getItem('users'));
-    for (const user of userlist) {
+    const userList: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userList) {
       console.log('checking:');
       console.log(user);
       if (user.email === email && user.passwordHash === passwordHash) {
+        console.log(user);
+        console.log('found');
+        return user;
+      }
+    }
+    return undefined;
+  }
+
+  findUserByEmail(email: string): User {
+    const userList: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userList) {
+      console.log('checking:');
+      console.log(user);
+      if (user.email === email) {
         console.log(user);
         console.log('found');
         return user;

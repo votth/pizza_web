@@ -30,6 +30,11 @@
                 <input type="password" class="form-control" id="registerPasswordAgain" name="registerPasswordAgain" ngModel required/>
             </div>
             <button type="submit" class="btn btn-primary">Regisztráció</button>
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-center" *ngIf="errorChecker === 'userExists'">Már létezik felhasználó ezzel az e-mail címmel!</p>
+            </div>
+          </div>
         </form>
         <br/><br/>
     </div>

@@ -9,8 +9,11 @@ import {Md5} from 'ts-md5';
 })
 export class NavBarComponent implements OnInit {
 
+  @ViewChild('closeButton') closeButton;
+
   email: string;
   password;
+  errorChecker = false;
 
   constructor(private userService: UserService) {
   }
@@ -27,11 +30,14 @@ export class NavBarComponent implements OnInit {
 
     const user = this.userService.findUser(this.email, this.password);
     if (user !== undefined) {
+      this.errorChecker = false;
       console.log('logged in as');
       console.log(this.email);
       console.log(this.password);
       this.userService.loginUser(user);
+      this.closeButton.nativeElement.click();
     } else {
+      this.errorChecker = true;
       console.log('not logged in, values: ');
       console.log(this.email);
       console.log(this.password);
