@@ -14,6 +14,7 @@ import {AuthGuard} from './Guards/auth.guard';
 import {UserService} from './Services/user.service';
 import { RegisterComponent } from './Views/Pages/register/register.component';
 import { ResetPasswordComponent } from './Views/Pages/reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ResetPasswordComponent } from './Views/Pages/reset-password/reset-passw
     ]),
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    ReactiveFormsModule,
+    HttpClientModule    
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
