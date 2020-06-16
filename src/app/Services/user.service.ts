@@ -29,6 +29,7 @@ export class UserService {
 
     users.push(this.user);
     console.log(users);
+    this.storeUsers();
   }
 
   // User login kezelés a GUARD-hoz.
@@ -39,7 +40,8 @@ export class UserService {
 
   // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
-    for (const user of users) {
+    const userlist: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userlist) {
       console.log('checking:');
       console.log(user);
       if (user.email === email && user.passwordHash === passwordHash) {
@@ -49,6 +51,10 @@ export class UserService {
       }
     }
     return undefined;
+  }
+
+  storeUsers(): void {
+    localStorage.setItem('users', JSON.stringify(users));
   }
 
 }
