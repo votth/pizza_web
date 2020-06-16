@@ -40,6 +40,8 @@ export class UserService {
   // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
     for (const user of users) {
+      console.log('checking:');
+      console.log(user);
       if (user.email === email && user.passwordHash === passwordHash) {
         console.log(user);
         console.log('found');

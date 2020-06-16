@@ -14,8 +14,8 @@ export class RegisterComponent implements OnInit {
   fullname: string;
   nickname: string;
   email: string;
-  password: string;
-  passwordagain: string;
+  password;
+  passwordagain;
 
   constructor(private userService: UserService) { }
 
@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit {
 
   registerClick(): void {
     this.fullname = this.firstname + ' ' + this.lastname;
-    this.password = JSON.stringify(Md5.hashStr(this.password));
-    this.passwordagain = JSON.stringify(Md5.hashStr(this.passwordagain));
+    this.password = Md5.hashStr(this.password);
+    this.passwordagain = Md5.hashStr(this.passwordagain);
     this.userService.registerUser(this.fullname, this.nickname, this.email, this.password);
     console.log(this.fullname);
     console.log(this.nickname);
