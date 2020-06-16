@@ -24,10 +24,11 @@ export class UserService {
     this.user.name = name;
     this.user.nickName = nickName;
     this.user.email = email;
-    this.user.passwordHash = JSON.stringify(Md5.hashStr(passwordHash));
+    this.user.passwordHash = passwordHash;
     this.user.shoppingBasket = new ShoppingBasket();
 
     users.push(this.user);
+    console.log(users);
   }
 
   // User login kezelés a GUARD-hoz.
