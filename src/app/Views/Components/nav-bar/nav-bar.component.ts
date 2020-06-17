@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../Services/user.service';
 import {Md5} from 'ts-md5';
 import {User} from '../../../Models/Users';
+import {AuthGuard} from '../../../Guards/auth.guard';
 
 @Component({
   selector: 'app-nav-bar',

@@ -11,7 +11,7 @@
       <div class="navbar-nav">
         <a href="#" class="nav-item nav-link active" routerLink="/" (click)="navigate($event)">Home</a>
         <a href="#" class="nav-item nav-link" routerLink="/menu" (click)="navigate($event)">Menü</a>
-        <a href="#" class="nav-item nav-link" routerLink="/create-pizza" (click)="navigate($event)">Create own pizza</a>
+        <a href="#" class="nav-item nav-link" routerLink="/create-pizza" data-toggle="modal" data-target="#loginWarnModal" (click)="navigate($event)">Create own pizza</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kosár</a>
@@ -101,3 +101,22 @@
 
     </div>
   </nav>
+
+  <div class="modal fade" id="loginWarnModal" *ngIf="!getLoggedIn">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HOPPÁ!</h5>
+        </div>
+        <div class="modal-body">
+          <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+          <a href="#">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginCenter">Bejelentkezés</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
