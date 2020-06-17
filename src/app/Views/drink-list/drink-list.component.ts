@@ -14,9 +14,6 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
 
   constructor() {
     super();
-    if (this.buyingUser.shoppingBasket.drinks === undefined) {
-      this.buyingUser.shoppingBasket.drinks = []; // local drink shopping list inicializálása
-    }
   }
 
   buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -34,5 +31,11 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
     super.ngOnInit();
     this.list = this.list.concat(drinks);
     this.filteredList = this.list;
+    if (this.buyingUser !== null) {
+      console.log('tryingtouser');
+      if (this.buyingUser.shoppingBasket.drinks === undefined) {
+        this.buyingUser.shoppingBasket.drinks = []; // local pizza shopping list inicializálása
+      }
+    }
   }
 }
