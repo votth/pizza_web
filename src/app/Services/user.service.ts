@@ -31,7 +31,7 @@ export class UserService {
     this.storeUsers(userList); // Frissült lista eltárolása.
   }
 
-  // User loggedI in kezelés a GUARD-hoz.
+  // User logged in kezelés
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -46,6 +46,25 @@ export class UserService {
       loggedInUser = new User();
       return loggedInUser;
     }
+  }
+
+  getLoginToken(): string {
+    const token = localStorage.getItem('loggedIn');
+    if (token !== undefined) {
+      return token;
+    }
+    else {
+      return undefined;
+    }
+  }
+
+  refreshUser(loggedInUser: User): void {
+    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+  }
+
+  logoutUser(): void {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('loggedInUser');
   }
 
   // User keresése az adatbázisban.

@@ -17,6 +17,7 @@ export class ShoppingBasketService {
     basket.sumPrice = 0;
   }
 
+  // Basket adatkinyerő
   getBasketPizzas(basket: ShoppingBasket): Pizza[] {
     const basketPizzas = basket.pizzas;
     return basketPizzas;
