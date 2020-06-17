@@ -42,12 +42,6 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
     super.ngOnInit();
     this.list = this.list.concat(pizzas);
     this.filteredList = this.list;
-    if (this.buyingUser !== null) {
-      console.log('tryingtouser');
-      if (this.buyingUser.shoppingBasket.pizzas === undefined) {
-        this.buyingUser.shoppingBasket.pizzas = []; // local pizza shopping list inicializálása
-      }
-    }
   }
 
 }

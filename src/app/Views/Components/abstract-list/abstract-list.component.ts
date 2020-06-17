@@ -59,6 +59,12 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
 
   ngOnInit(): void {
     this.sortParam = 'empty';
+    if (this.buyingUser !== null) {
+      console.log('tryingtouser');
+      if (this.buyingUser.shoppingBasket.pizzas === undefined) {
+        this.buyingUser.shoppingBasket.pizzas = []; // local pizza shopping list inicializálása
+      }
+    }
   }
 
 }

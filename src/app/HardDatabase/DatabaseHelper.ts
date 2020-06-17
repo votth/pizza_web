@@ -33,6 +33,14 @@ export let users: User[] = [
     email: 'darling@gmail.com',
     passwordHash: '401bfea1b1151e3eea85bfd333700b60',
     shoppingBasket: new ShoppingBasket()
+  },
+  {
+    id: 9999,
+    name: 'admin admin',
+    nickName: 'admin',
+    email: 'a@a.com',
+    passwordHash: '47bce5c74f589f4867dbd57e9ca9f808', // aaa
+    shoppingBasket: new ShoppingBasket()
   }
 ];
 
@@ -223,7 +231,6 @@ export const pizzas: Pizza[] = [
       ingredients[2],
       ingredients[3]
     ],
-    ingredientsId: [1, 2, 3],
     price: 1500,
     rating: 3.6
   },
@@ -236,7 +243,6 @@ export const pizzas: Pizza[] = [
       ingredients[2],
       ingredients[3]
     ],
-    ingredientsId: [1, 2, 3],
     price: 2000,
     rating: 4.1
   },
@@ -249,7 +255,6 @@ export const pizzas: Pizza[] = [
       ingredients[2],
       ingredients[3]
     ],
-    ingredientsId: [1, 2, 3],
     price: 1999,
     rating: 2.3
   },
@@ -262,7 +267,6 @@ export const pizzas: Pizza[] = [
       ingredients[7],
       ingredients[3]
     ],
-    ingredientsId: [1, 7, 3],
     price: 1650,
     rating: 2.7
   },
@@ -275,7 +279,6 @@ export const pizzas: Pizza[] = [
       ingredients[5],
       ingredients[3]
     ],
-    ingredientsId: [ 1, 5, 3],
     price: 1870,
     rating: 3.5
   },
@@ -288,7 +291,6 @@ export const pizzas: Pizza[] = [
       ingredients[0],
       ingredients[3]
     ],
-    ingredientsId: [1, 0, 3],
     price: 1800,
     rating: 3.5
   },
@@ -303,7 +305,6 @@ export const pizzas: Pizza[] = [
       ingredients[2],
       ingredients[2]
     ],
-    ingredientsId: [ 2, 2, 2, 2, 2],
     price: 2200,
     rating: 5
   }

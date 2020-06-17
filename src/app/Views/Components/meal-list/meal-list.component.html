@@ -47,8 +47,8 @@
       <td>{{item.price | currencyHuf}}</td>
       <td>{{item.dough}}</td>
       <td>
-        <ng-container *ngFor="let ingredient of item.ingredientsId">
-          {{ingredient | ingredientById}},
+        <ng-container *ngFor="let ingredient of item.ingredients">
+          {{ingredient.name}},
         </ng-container>
       </td>
       <td><app-five-star [rating]="item.rating" ></app-five-star></td>

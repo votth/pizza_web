@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {drinks, pizzas} from '../../../HardDatabase/DatabaseHelper';
+import {drinks} from '../../../HardDatabase/DatabaseHelper';
 import {Drink} from '../../../Models/Drink';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
 import {User} from '../../../Models/Users';
-import {Pizza} from '../../../Models/Pizza';
 
 @Component({
   selector: 'app-drink-list',
@@ -31,11 +30,6 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
     super.ngOnInit();
     this.list = this.list.concat(drinks);
     this.filteredList = this.list;
-    if (this.buyingUser !== null) {
-      console.log('tryingtouser');
-      if (this.buyingUser.shoppingBasket.drinks === undefined) {
-        this.buyingUser.shoppingBasket.drinks = []; // local pizza shopping list inicializálása
-      }
-    }
+    // máté abstract list-ben keresd az if-et
   }
 }
