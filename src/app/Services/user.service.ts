@@ -2,37 +2,36 @@ import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
 import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
-import { Md5 } from 'ts-md5';
 
 @Injectable({
   providedIn: 'root'
 })
+
+// Ez a service felel a userek kezeléséért.
 export class UserService {
 
   user: User;
 
   constructor() {
+    // Backendről user lista inicializálás (ha még nincs).
+    if (!localStorage.getItem('users')) {
+      this.storeUsers(users);
+    }
   }
 
-  // Ez a service felel a userek kezeléséért.
-
-  // User regisztrálása az adatbázisba.
+  // User regisztrálása az adatbázisba, eltárolás.
   registerUser(name: string, nickName: string, email: string, passwordHash: string): void {
-    const idCount = users.length;
-    this.user = new User();
-    this.user.id = idCount;
-    this.user.name = name;
-    this.user.nickName = nickName;
-    this.user.email = email;
-    this.user.passwordHash = passwordHash;
-    this.user.shoppingBasket = new ShoppingBasket();
+    const userList = JSON.parse(localStorage.getItem('users')); // Tárolt lista lekérése.
 
-    users.push(this.user);
-    console.log(users);
-    this.storeUsers();
+    const idCount = userList.length;
+    this.user = new User(idCount, name, nickName, email, passwordHash); // Új user generálása.
+
+    userList.push(this.user); // Új user listához adása.
+
+    this.storeUsers(userList); // Frissült lista eltárolása.
   }
 
-  // User login kezelés a GUARD-hoz.
+  // User loggedI in kezelés a GUARD-hoz.
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -40,8 +39,8 @@ export class UserService {
 
   // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
-    const userlist: User[] = JSON.parse(localStorage.getItem('users'));
-    for (const user of userlist) {
+    const userList: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userList) {
       console.log('checking:');
       console.log(user);
       if (user.email === email && user.passwordHash === passwordHash) {
@@ -53,8 +52,23 @@ export class UserService {
     return undefined;
   }
 
-  storeUsers(): void {
-    localStorage.setItem('users', JSON.stringify(users));
+  findUserByEmail(email: string): User {
+    const userList: User[] = JSON.parse(localStorage.getItem('users'));
+    for (const user of userList) {
+      console.log('checking:');
+      console.log(user);
+      if (user.email === email) {
+        console.log(user);
+        console.log('found');
+        return user;
+      }
+    }
+    return undefined;
+  }
+
+  // Userlista tároló
+  storeUsers(userList: User[]): void {
+    localStorage.setItem('users', JSON.stringify(userList));
   }
 
 }
