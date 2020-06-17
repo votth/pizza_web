@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
-import {Pizza} from '../../Models/Pizza';
-import {pizzas} from '../../HardDatabase/DatabaseHelper';
-import {User} from '../../Models/Users';
+import {Pizza} from '../../../Models/Pizza';
+import {pizzas} from '../../../HardDatabase/DatabaseHelper';
+import {User} from '../../../Models/Users';
 
 @Component({
   selector: 'app-meal-list',

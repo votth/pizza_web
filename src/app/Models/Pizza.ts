@@ -10,10 +10,10 @@ export class Pizza {
   rating: number;
 
   constructor(
-    id: number = 0,
+    id: number = -1,
     name: string = '',
     ingredients: Ingredient[] = [],
-    ingredientsId: number[],
+    ingredientsId: number[] = [],
     price: number = 0) {
 
     this.ingredientsId = ingredientsId;

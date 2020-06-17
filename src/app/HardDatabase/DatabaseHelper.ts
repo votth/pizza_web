@@ -77,8 +77,6 @@ export const ingredients: Ingredient[] = [
   },
   {
     id: 5,
-    name: 'tejfölös',
-    id: 5,
     name: 'fokhagymás tejfölös',
     price: 10,
     picture: 'http://www.mindmegette.hu/images/263/O/fokhagymamartas.jpg',
@@ -145,14 +143,6 @@ export const ingredients: Ingredient[] = [
   }
 ];
 
-export let pizzas: Pizza[] = [
-  {
-    id: 0,
-    name: 'négysajtos',
-    ingredients: [1,2],
-    price: 1980
-  }
-];
 // itt vannak a beégetett innivalók
 export const drinks: Drink[] = [
   {
@@ -228,6 +218,7 @@ export const pizzas: Pizza[] = [
     id: 501,
     name: 'Pizzo uno',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 2, 3],
     price: 1500,
     rating: 3.6
@@ -236,6 +227,7 @@ export const pizzas: Pizza[] = [
     id: 502,
     name: 'Fishy pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 2, 3],
     price: 2000,
     rating: 4.1
@@ -244,6 +236,7 @@ export const pizzas: Pizza[] = [
     id: 503,
     name: 'Ananas pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 2, 3],
     price: 1999,
     rating: 2.3
@@ -252,6 +245,7 @@ export const pizzas: Pizza[] = [
     id: 504,
     name: 'Ninja pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 7, 3],
     price: 1650,
     rating: 2.7
@@ -260,6 +254,7 @@ export const pizzas: Pizza[] = [
     id: 505,
     name: 'Hungarian pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 5, 3],
     price: 1870,
     rating: 3.5
@@ -268,6 +263,7 @@ export const pizzas: Pizza[] = [
     id: 506,
     name: 'Vietnamese pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [1, 0, 3],
     price: 1800,
     rating: 3.5
@@ -276,6 +272,7 @@ export const pizzas: Pizza[] = [
     id: 507,
     name: 'Somogyi pizza',
     dough: 'Extra thicc',
+    ingredients: [],
     ingredientsId: [2, 2, 2, 2, 2],
     price: 2200,
     rating: 5

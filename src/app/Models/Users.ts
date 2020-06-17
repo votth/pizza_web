@@ -8,7 +8,7 @@ export class User {
   passwordHash: string;
   shoppingBasket: ShoppingBasket;
 
-  constructor(id: number, name: string, nickName: string, email: string, passwordHash: string) {
+  constructor(id: number = -1, name: string = '', nickName: string = '', email: string = '', passwordHash: string = '') {
     this.id = id;
     this.name = name;
     this.nickName = nickName;

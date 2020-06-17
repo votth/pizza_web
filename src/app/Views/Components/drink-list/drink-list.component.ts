@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {drinks, pizzas} from '../../HardDatabase/DatabaseHelper';
-import {Drink} from '../../Models/Drink';
+import {drinks, pizzas} from '../../../HardDatabase/DatabaseHelper';
+import {Drink} from '../../../Models/Drink';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
-import {User} from '../../Models/Users';
-import {Pizza} from '../../Models/Pizza';
+import {User} from '../../../Models/Users';
+import {Pizza} from '../../../Models/Pizza';
 
 @Component({
   selector: 'app-drink-list',

@@ -8,10 +8,10 @@ import {ResetPasswordComponent} from './Views/Pages/reset-password/reset-passwor
 import {BasketComponent} from './Views/Pages/basket/basket.component';
 
 import {CurrencyHufPipe} from './Pipes/currency-huf.pipe';
-import {MealListComponent} from './Views/meal-list/meal-list.component';
-import {FiveStarComponent} from './Views/five-star/five-star.component';
-import {DrinkListComponent} from './Views/drink-list/drink-list.component';
-import {ListsComponent} from './Views/lists/lists.component';
+import {MealListComponent} from './Views/Components/meal-list/meal-list.component';
+import {FiveStarComponent} from './Views/Components/five-star/five-star.component';
+import {DrinkListComponent} from './Views/Components/drink-list/drink-list.component';
+import {ListsComponent} from './Views/Pages/lists/lists.component';
 import {IngredientByIdPipe} from './Pipes/ingredient-by-id.pipe';
 
 import {AuthGuard} from './Guards/auth.guard';

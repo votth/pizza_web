@@ -19,10 +19,13 @@ export class CreatePizzaComponent implements OnInit {
 
   headerText = 'Dobjad össze saját pizzádat';
   pizza: Pizza = {
+    dough: '',
     ingredients: [],
+    ingredientsId: [],
     id: -1,
     name: '',
-    price: 0
+    price: 0,
+    rating: 0
   };
 
   phases: Phase[] = [
