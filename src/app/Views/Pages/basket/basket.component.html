@@ -81,30 +81,26 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Ingredients</th>
           </tr>
         </thead>
         <tbody>
-<!--      let item of {from some list of somewhere}
-          <tr *ngFor=" let item of ...; let i = index">
-            <th scope="row">{{i+1}}}</th>
+          <!-- Printing out value from array -->
+          <tr *ngFor=" let item of basketPizzas; let i = index">
+            <th scope="row">{{i+1}}</th>
             <td>{{ item.name }}</td>
             <td>{{ item.price | currencyHuf }}</td>
-            <td>
-              <ng-container *ngFor="let ingredient of ...">
-                {{ingredient.name}},
-              </ng-container>
-            </td>
           </tr>
--->          
-<!--      Can be delete after finish the above logic     -->
+          <tr *ngFor=" let item of basketDrinks; let j = index">
+            <th scope="row">{{basketPizzas.length+j+1}}</th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | currencyHuf }}</td>
+          </tr>
+
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">VÉGÖSSZEGE</th>
+            <td></td>
+            <td></td>
           </tr>
-          
         </tbody>
       </table>
       <br/>
