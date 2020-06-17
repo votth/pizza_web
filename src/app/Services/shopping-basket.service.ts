@@ -26,4 +26,9 @@ export class ShoppingBasketService {
     const basketPizzas = basket.drinks;
     return basketPizzas;
   }
+
+  getBasketPrice(basket: ShoppingBasket): number {
+    const basketPrice = basket.sumPrice;
+    return basketPrice;
+  }
 }

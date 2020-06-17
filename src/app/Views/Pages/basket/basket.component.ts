@@ -26,10 +26,12 @@ export class BasketComponent implements OnInit {
     const loggedInUser = this.userService.getLoggedInUser();
     const basketPizzas: Pizza[] = this.basketService.getBasketPizzas(loggedInUser.shoppingBasket);
     const basketDrinks: Drink[] = this.basketService.getBasketDrinks(loggedInUser.shoppingBasket);
+    const basketPrice: number = this.basketService.getBasketPrice(loggedInUser.shoppingBasket);
 
     console.log(loggedInUser);
     console.log(basketPizzas);
     console.log(basketDrinks);
+    console.log(basketPrice);
   }
 
   navigate(page: Event) {
