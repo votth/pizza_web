@@ -15,7 +15,6 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
     super();
   }
 
-  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
   buyPizza: Pizza;
   selectedDough = 'empty';
 

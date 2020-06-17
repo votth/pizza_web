@@ -21,7 +21,6 @@ export class CreatePizzaComponent implements OnInit {
   pizza: Pizza = {
     dough: '',
     ingredients: [],
-    ingredientsId: [],
     id: -1,
     name: '',
     price: 0,

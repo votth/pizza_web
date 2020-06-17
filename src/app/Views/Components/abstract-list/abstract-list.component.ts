@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pizza} from '../../../Models/Pizza';
 import {Drink} from '../../../Models/Drink';
+import {User} from '../../../Models/Users';
 
 export abstract class AbstractListComponent<T extends Pizza | Drink> implements OnInit {
 
@@ -10,6 +11,7 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
   filteredList: T[] = [];
   sortParam: string;
   currSortParam: string;
+  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
 
   get listFilter(): string {
     return this._listFilter;
