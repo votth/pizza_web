@@ -3,6 +3,11 @@ p.navbar-text
     margin: 0;
 }
 
+.dropdown-item
+{
+    margin: 10px 0;
+}
+
 #logOutButton
 {
     color: #282c31;
