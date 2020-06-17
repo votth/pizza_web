@@ -61,9 +61,9 @@ export class NavBarComponent implements OnInit {
   }
 
   emptyBasket(): void {
-    this.getLoggedInUser.shoppingBasket.pizzas = undefined;
-    this.getLoggedInUser.shoppingBasket.drinks = undefined;
-    /*this.getLoggedInUser.shoppingBasket.sumPrice = 0;*/
+    this.getLoggedInUser.shoppingBasket.pizzas = [];
+    this.getLoggedInUser.shoppingBasket.drinks = [];
+    this.getLoggedInUser.shoppingBasket.sumPrice = 0;
     localStorage.setItem('loggedInUser', JSON.stringify(this.getLoggedInUser));
   }
 
