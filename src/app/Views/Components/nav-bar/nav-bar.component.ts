@@ -17,12 +17,12 @@ export class NavBarComponent implements OnInit {
   email: string;
   password;
   errorChecker = false;
-  getLoggedIn;
+  getLoggedIn: string;
   getLoggedInUser: User;
 
   constructor(private userService: UserService, private basketService: ShoppingBasketService) {
-    this.getLoggedIn = localStorage.getItem('loggedIn');
-    this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    this.getLoggedIn = userService.getLoginToken();
+    this.getLoggedInUser = userService.getLoggedInUser();
     console.log(this.getLoggedIn);
   }
 
@@ -44,7 +44,7 @@ export class NavBarComponent implements OnInit {
       console.log(this.password);
       this.userService.loginUser(user);
       this.closeButton.nativeElement.click();
-      this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      this.getLoggedInUser = this.userService.getLoggedInUser();
     } else {
       this.errorChecker = true;
       console.log('not logged in, values: ');
@@ -52,18 +52,17 @@ export class NavBarComponent implements OnInit {
       console.log(this.password);
     }
 
-    this.getLoggedIn = localStorage.getItem('loggedIn');
+    this.getLoggedIn = this.userService.getLoginToken();
     console.log(this.getLoggedIn);
   }
 
   logOut(): void {
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('loggedIn');
+    this.userService.logoutUser();
   }
 
   emptyBasket(): void {
     this.basketService.emtpyBasket(this.getLoggedInUser.shoppingBasket);
-    localStorage.setItem('loggedInUser', JSON.stringify(this.getLoggedInUser));
+    this.userService.refreshUser(this.getLoggedInUser);
   }
 
   navigate(page: Event) {
