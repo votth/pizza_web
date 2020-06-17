@@ -75,6 +75,38 @@
 
     <!-- Basket display area -->
     <div class="card align-items-center p-2">
-
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Ingredients</th>
+          </tr>
+        </thead>
+        <tbody>
+<!--      let item of {from some list of somewhere}
+          <tr *ngFor=" let item of ...; let i = index">
+            <th scope="row">{{i+1}}}</th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | currencyHuf }}</td>
+            <td>
+              <ng-container *ngFor="let ingredient of ...">
+                {{ingredient.name}},
+              </ng-container>
+            </td>
+          </tr>
+-->          
+<!--      Can be delete after finish the above logic     -->
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <br/>
     </div>
 </div>

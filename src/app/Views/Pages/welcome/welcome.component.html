@@ -79,8 +79,8 @@
             <div class="card-body">
               <h5 class="card-title">{{item.name | titlecase}}</h5>
               <p class="card-text">        
-                <ng-container *ngFor="let ingredient of item.ingredientsId">
-                  {{ingredient | ingredientById}},
+                <ng-container *ngFor="let ingredient of item.ingredients">
+                  {{ingredient.name}},
                 </ng-container>
               </p>
             </div>
@@ -95,8 +95,8 @@
             <div class="card-body">
               <h5 class="card-title">{{item.name | titlecase}}</h5>
               <p class="card-text">        
-                <ng-container *ngFor="let ingredient of item.ingredientsId">
-                  {{ingredient | ingredientById}},
+                <ng-container *ngFor="let ingredient of item.ingredients">
+                  {{ingredient.name}},
                 </ng-container>
               </p>
             </div>
