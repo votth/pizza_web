@@ -1,6 +1,6 @@
-<div class="bs-example">
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
 
+  <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    
     <div class="navbar-brand">Brand</div>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -14,11 +14,10 @@
         <a href="#" class="nav-item nav-link" routerLink="/create-pizza" (click)="navigate($event)">Create own pizza</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kosár</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">Inbox</a>
-            <a href="#" class="dropdown-item">Sent</a>
-            <a href="#" class="dropdown-item">Drafts</a>
+            <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Go to</a>
+            <a href="#" class="dropdown-item">Empty Basket</a>
           </div>
         </div>
       </div>
@@ -82,4 +81,3 @@
 
     </div>
   </nav>
-</div>
