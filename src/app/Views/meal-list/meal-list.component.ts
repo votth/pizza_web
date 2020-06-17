@@ -3,7 +3,6 @@ import {AbstractListComponent} from '../abstract-list/abstract-list.component';
 import {Pizza} from '../../Models/Pizza';
 import {pizzas} from '../../HardDatabase/DatabaseHelper';
 import {User} from '../../Models/Users';
-import {flattenInheritedDirectiveMetadata} from '@angular/compiler-cli/src/ngtsc/metadata/src/inheritance';
 
 @Component({
   selector: 'app-meal-list',

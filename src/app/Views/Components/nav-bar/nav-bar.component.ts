@@ -59,6 +59,13 @@ export class NavBarComponent implements OnInit {
     localStorage.removeItem('loggedIn');
   }
 
+  emptyBasket(): void {
+    this.getLoggedInUser.shoppingBasket.pizzas = undefined;
+    this.getLoggedInUser.shoppingBasket.drinks = undefined;
+    /*this.getLoggedInUser.shoppingBasket.sumPrice = 0;*/
+    localStorage.setItem('loggedInUser', JSON.stringify(this.getLoggedInUser));
+  }
+
   navigate(page: Event) {
     console.log(page.target);
   }

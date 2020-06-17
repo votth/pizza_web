@@ -1,6 +1,6 @@
 
   <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    
+
     <div class="navbar-brand">Brand</div>
 
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -17,7 +17,7 @@
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kosár</a>
           <div class="dropdown-menu">
             <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Go to</a>
-            <a href="#" class="dropdown-item">Empty Basket</a>
+            <a href="#" class="dropdown-item" (click)="emptyBasket()">Empty Basket</a>
           </div>
         </div>
       </div>
