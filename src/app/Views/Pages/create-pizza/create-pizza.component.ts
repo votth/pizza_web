@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Pizza} from '../../../Models/Pizza';
-import {Ingredient} from '../../../Models/Ingredient';
 import {ingredients} from '../../../HardDatabase/DatabaseHelper';
+import {PizzaService} from '../../../Services/pizza.service';
+import {Phase} from '../../../Models/Phase';
 
 @Component({
   selector: 'app-create-pizza',
@@ -9,6 +10,12 @@ import {ingredients} from '../../../HardDatabase/DatabaseHelper';
   styleUrls: ['./create-pizza.component.css']
 })
 export class CreatePizzaComponent implements OnInit {
+
+  addToCartEnable = false;
+  addToCartEnableTimerCounter = 750;
+
+  pizzaQuantity = 1;
+  pizzaName: string;
 
   headerText = 'Dobjad össze saját pizzádat';
   pizza: Pizza = {
@@ -50,7 +57,7 @@ export class CreatePizzaComponent implements OnInit {
       unique: false
     },
     {
-      text: 'Adja meg hány darabot szeretne ebből a pizzából',
+      text: 'Adjad meg hány darabot szeretnél ebből a pizzából a kosárba rakni',
       name: 'finish',
       pizzaIngredientSelectors: [
         {
@@ -95,6 +102,7 @@ export class CreatePizzaComponent implements OnInit {
   }
 
   PreviousPhase() {
+    this.addToCartEnable = false;
     if (this.actualPhase === 0) {
       return;
     }
@@ -102,9 +110,15 @@ export class CreatePizzaComponent implements OnInit {
   }
 
   NextPhase() {
-    console.log('this.NextPhase()');
     this.actualPhase++;
-    if (this.actualPhase > this.phases.length) {
+    if (this.phases[this.actualPhase].name === 'finish') {
+      this.TimedCartButtonEnable();
+    }
+    console.log(this.actualPhase);
+    console.log(this.phases.length);
+    console.log(this.actualPhase > this.phases.length);
+    if (this.actualPhase >= this.phases.length) {
+      this.actualPhase--;
       // ADD PIZZA
       return;
     }
@@ -141,17 +155,22 @@ export class CreatePizzaComponent implements OnInit {
       });
     }
   }
-}
 
-class Phase {
-  text: string;
-  name: string;
-  pizzaIngredientSelectors: PizzaIngredientSelector[];
-  unique: boolean;
-}
+  async TimedCartButtonEnable() {
+    console.log('addtocart is ' + this.addToCartEnable);
+    setTimeout(() => {
+      this.addToCartEnable = true;
+      console.log('addtocart is ' + this.addToCartEnable);
+    }, this.addToCartEnableTimerCounter);
+  }
 
-// egy gombnak a modelje
-class PizzaIngredientSelector {
-  selected: boolean;
-  ingredient: Ingredient;
+  AddToCart() {
+    const pizzaService: PizzaService = new PizzaService();
+    pizzaService.PutPizzaToShoppingBasket(this.pizzaQuantity, pizzaService.CreatePizza(this.phases, this.pizzaName));
+  }
+
+  SetPizzaQuantity() {
+    this.pizzaQuantity = +(document.getElementById('pizza-quantity') as HTMLInputElement).value;
+    console.log(this.pizzaQuantity);
+  }
 }
