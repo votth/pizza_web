@@ -4,6 +4,9 @@ import {Drink} from '../Models/Drink';
 import {ShoppingBasket} from '../Models/ShoppingBasket';
 import {Pizza} from '../Models/Pizza';
 
+// tslint:disable-next-line:no-namespace
+export let loggedUser: User = new User();
+
 // a regisztráció ide tölti majd a usereket, illetve bejelentkezésnél innen lesz hitelesítve
 export let users: User[] = [
   // userek (encrypted passwordökkel)
@@ -33,74 +36,123 @@ export let users: User[] = [
   }
 ];
 
-// itt vannak a beégetett feltétek
+// alapanyagok
 export const ingredients: Ingredient[] = [
   // feltétek
   {
     id: 0,
     name: 'uborka',
     price: 10,
-    type: 'feltét'
+    picture: 'https://www.pizzaemerigo.hu/wp-content/uploads/2016/10/csemegeuborka.jpg',
+    type: 'topping'
   },
   {
     id: 1,
     name: 'Paradicsom',
     price: 10,
-    type: 'feltét'
+    picture: 'https://www.natursziget.com/wp-content/uploads/2019/09/20190912-paradicsom-1200x630-c-default.jpg',
+    type: 'topping'
   },
   {
     id: 2,
     name: 'sajt',
     price: 10,
-    type: 'feltét'
+    picture: 'http://www.letrappistebrugge.com/wp-content/uploads/2018/02/trappist_monk_cheese-640x430.png',
+    type: 'topping'
   },
   {
     id: 3,
     name: 'paprika',
     price: 10,
-    type: 'feltét'
+    picture: 'https://static.euronews.com/articles/3327954/1280x720_3327954.jpg',
+    type: 'topping'
   },
   // alapok
   {
     id: 4,
     name: 'paradicsomos',
     price: 10,
-    type: 'alap'
+    picture: 'http://www.mindmegette.hu/images/186/O/paradicsommartas.jpg',
+    type: 'base'
   },
   {
     id: 5,
     name: 'tejfölös',
+    id: 5,
+    name: 'fokhagymás tejfölös',
     price: 10,
-    type: 'alap'
+    picture: 'http://www.mindmegette.hu/images/263/O/fokhagymamartas.jpg',
+    type: 'base'
   },
   // tészta fajták
   {
     id: 6,
     name: 'vastag',
     price: 10,
-    type: 'tészta'
+    picture: 'https://www.2brotherspizza.co.za/sites/all/themes/twobrothers/images/thick-pizza-base.png',
+    type: 'doughThickness'
   },
   {
     id: 7,
     name: 'vékony',
     price: 10,
-    type: 'tészta'
+    picture: 'https://www.pikpng.com/pngl/b/420-4203889_menu-nancy-s-thin-crust-sausage-pizza-clipart.png',
+    type: 'doughThickness'
+  },
+  // pizza size
+  {
+    id: 8,
+    name: '28',
+    price: 10,
+    picture: 'https://lh3.googleusercontent.com/proxy/QBOJ4mdIVyyTGQQ-xm-TKZ6hAHuBWfyiTaeEEmxINTGfRdsh9SPsFIpRekauOYecxAE3AZ_iUC0pSf4ECS-Qn6hN6813hUpo0q5tN0OsJaoq0Y141QlxboCwWhAn6GfNgxn8',
+    type: 'size'
+  },
+  {
+    id: 9,
+    name: '32',
+    price: 10,
+    picture: 'https://cdn.pixabay.com/photo/2012/04/23/15/32/number-38545_960_720.png',
+    type: 'size'
+  },
+  {
+    id: 10,
+    name: '45',
+    price: 10,
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Augsburg_Bus_45.svg',
+    type: 'size'
+  },
+  {
+    id: 11,
+    name: '60',
+    price: 10,
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Number_60.png',
+    type: 'size'
   },
   // tészta típusok
   {
-    id: 8,
+    id: 12,
     name: 'gluténmentes',
     price: 10,
-    type: 'tésztatípus'
+    picture: 'https://shelleycase.com/wp-content/uploads/2017/01/gluten-free-icon.png',
+    type: 'doughType'
   },
   {
-    id: 4,
-    name: 'sima',
+    id: 13,
+    name: 'szénhidrátcsökkentett',
     price: 10,
-    type: 'tésztatípus'
-  },
+    picture: 'https://nano-fit.com/wp-content/uploads/2018/10/icon-testsulycsokkentes-01.png',
+    type: 'doughType'
+  }
 ];
 
+export let pizzas: Pizza[] = [
+  {
+    id: 0,
+    name: 'négysajtos',
+    ingredients: [1,2],
+    price: 1980
+  }
+];
 // itt vannak a beégetett innivalók
 export const drinks: Drink[] = [
   {
