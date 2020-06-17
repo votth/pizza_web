@@ -37,6 +37,17 @@ export class UserService {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
   }
 
+  getLoggedInUser(): User {
+    let loggedInUser: User;
+    if (localStorage.getItem('loggedInUser')) {
+      loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      return loggedInUser;
+    } else {
+      loggedInUser = new User();
+      return loggedInUser;
+    }
+  }
+
   // User keresése az adatbázisban.
   findUser(email: string, passwordHash: string): User {
     const userList: User[] = JSON.parse(localStorage.getItem('users'));

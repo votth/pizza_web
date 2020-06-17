@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ShoppingBasketService} from '../../../Services/shopping-basket.service';
+import { Pizza } from '../../../Models/Pizza';
+import { Drink } from '../../../Models/Drink';
+import {UserService} from '../../../Services/user.service';
 
 // Maybe can just import from the basket and build a list from there?
 
@@ -16,9 +20,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
-  constructor() { }
+  constructor(private basketService: ShoppingBasketService, private userService: UserService) { }
 
   ngOnInit(): void {
+    const loggedInUser = this.userService.getLoggedInUser();
+    const basketPizzas: Pizza[] = this.basketService.getBasketPizzas(loggedInUser.shoppingBasket);
+    const basketDrinks: Drink[] = this.basketService.getBasketDrinks(loggedInUser.shoppingBasket);
+
+    console.log(loggedInUser);
+    console.log(basketPizzas);
+    console.log(basketDrinks);
   }
 
   navigate(page: Event) {
