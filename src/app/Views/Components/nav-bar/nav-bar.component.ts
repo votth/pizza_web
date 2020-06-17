@@ -3,6 +3,7 @@ import {UserService} from '../../../Services/user.service';
 import {Md5} from 'ts-md5';
 import {User} from '../../../Models/Users';
 import {AuthGuard} from '../../../Guards/auth.guard';
+import {ShoppingBasketService} from '../../../Services/shopping-basket.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,7 +20,7 @@ export class NavBarComponent implements OnInit {
   getLoggedIn;
   getLoggedInUser: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private basketService: ShoppingBasketService) {
     this.getLoggedIn = localStorage.getItem('loggedIn');
     this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     console.log(this.getLoggedIn);
@@ -61,9 +62,7 @@ export class NavBarComponent implements OnInit {
   }
 
   emptyBasket(): void {
-    this.getLoggedInUser.shoppingBasket.pizzas = [];
-    this.getLoggedInUser.shoppingBasket.drinks = [];
-    this.getLoggedInUser.shoppingBasket.sumPrice = 0;
+    this.basketService.emtpyBasket(this.getLoggedInUser.shoppingBasket);
     localStorage.setItem('loggedInUser', JSON.stringify(this.getLoggedInUser));
   }
 
