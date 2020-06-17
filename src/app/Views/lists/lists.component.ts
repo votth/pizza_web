@@ -9,8 +9,8 @@ export class ListsComponent implements OnInit {
 
   pageTitle: string;
   currPage: string;
-  btnActive = 'btn btn-primary';
-  btnPassive = 'btn btn-dark';
+  btnPassive = 'btn btn-light p-btn pr-3 pl-3 border-0 bg-half-light';
+  btnActive = 'btn btn-dark p-btn pr-3 pl-3 border-0 bg-half-dark';
 
   pageSwitch(param: string): void{
     switch (param) {
