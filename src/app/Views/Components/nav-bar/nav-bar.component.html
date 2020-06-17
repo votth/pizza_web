@@ -17,10 +17,30 @@
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kosár</a>
           <div class="dropdown-menu">
             <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Go to</a>
-            <a href="#" class="dropdown-item" (click)="emptyBasket()">Empty Basket</a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#confirmEmptyModal">Empty Basket</a>
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="confirmEmptyModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">KOSÁR TARTALMÁNAK TÖRLÉSE</h5>
+            </div>
+            <div class="modal-body">
+              <p>Biztos vagy benne, hogy törlöd a kosár tartalmát?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégse</button>
+              <a href="#">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="emptyBasket()">Törlés</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!--SEARCH NEEDS REWRITE-->
       <form class="form-inline">
         <div class="input-group">
