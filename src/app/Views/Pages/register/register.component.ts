@@ -38,18 +38,23 @@ export class RegisterComponent implements OnInit {
     if (this.userService.findUserByEmail(this.email) !== undefined) {
       this.errorChecker = 'userExists';
     } else {
-      this.fullname = this.firstname + ' ' + this.lastname;
-      this.password = Md5.hashStr(this.password);
-      this.passwordagain = Md5.hashStr(this.passwordagain);
-      this.userService.registerUser(this.fullname, this.nickname, this.email, this.password);
+      if (this.password !== this.passwordagain) {
+        this.errorChecker = 'passwordNotSame';
+      } else {
+        this.errorChecker = undefined;
+        this.fullname = this.firstname + ' ' + this.lastname;
+        this.password = Md5.hashStr(this.password);
+        this.passwordagain = Md5.hashStr(this.passwordagain);
+        this.userService.registerUser(this.fullname, this.nickname, this.email, this.password);
 
-      console.log(this.fullname);
-      console.log(this.nickname);
-      console.log(this.email);
-      console.log(this.password);
-      console.log(this.passwordagain);
+        console.log(this.fullname);
+        console.log(this.nickname);
+        console.log(this.email);
+        console.log(this.password);
+        console.log(this.passwordagain);
 
-      this.router.navigate(['']);
+        this.router.navigate(['']);
+      }
     }
   }
 

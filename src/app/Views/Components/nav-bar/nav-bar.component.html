@@ -35,16 +35,18 @@
       </form>
       <!--LOGIN BUTTON-->
       <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginCenter">
-            Bejelenkezik
+        <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginCenter" *ngIf="!getLoggedIn">
+            Bejelenkezés
         </a>
+        <p class="navbar-text" *ngIf="getLoggedIn">Bejelentkezve: {{ getLoggedInUser.name }} ( {{ getLoggedInUser.nickName }} )</p>
+        <a href="" class="nav-item nav-link" *ngIf="getLoggedIn" (click)="logOut()">Kijelentkezés</a>
       </div>
 
       <div class="modal fade" id="loginCenter">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">BEJELENKEZÉSI INFO.</h5>
+              <h5 class="modal-title">BEJELENKEZÉS</h5>
             </div>
             <div class="modal-body">
               <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>

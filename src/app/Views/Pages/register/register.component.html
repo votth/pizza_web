@@ -33,6 +33,7 @@
           <div class="row">
             <div class="col-sm">
               <p class="text-center" *ngIf="errorChecker === 'userExists'">Már létezik felhasználó ezzel az e-mail címmel!</p>
+              <p class="text-center" *ngIf="errorChecker === 'passwordNotSame'">A jelszavak nem egyeznek!</p>
             </div>
           </div>
         </form>

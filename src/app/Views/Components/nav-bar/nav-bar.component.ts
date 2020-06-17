@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../Services/user.service';
 import {Md5} from 'ts-md5';
+import {User} from '../../../Models/Users';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,8 +15,13 @@ export class NavBarComponent implements OnInit {
   email: string;
   password;
   errorChecker = false;
+  getLoggedIn;
+  getLoggedInUser: User;
 
   constructor(private userService: UserService) {
+    this.getLoggedIn = localStorage.getItem('loggedIn');
+    this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    console.log(this.getLoggedIn);
   }
 
   ngOnInit(): void {
@@ -36,13 +42,21 @@ export class NavBarComponent implements OnInit {
       console.log(this.password);
       this.userService.loginUser(user);
       this.closeButton.nativeElement.click();
+      this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     } else {
       this.errorChecker = true;
       console.log('not logged in, values: ');
       console.log(this.email);
       console.log(this.password);
-      localStorage.setItem('loggedIn', null);
     }
+
+    this.getLoggedIn = localStorage.getItem('loggedIn');
+    console.log(this.getLoggedIn);
+  }
+
+  logOut(): void {
+    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('loggedIn');
   }
 
   navigate(page: Event) {

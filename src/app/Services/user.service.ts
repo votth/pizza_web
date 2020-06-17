@@ -24,13 +24,7 @@ export class UserService {
     const userList = JSON.parse(localStorage.getItem('users')); // Tárolt lista lekérése.
 
     const idCount = userList.length;
-    this.user = new User();
-    this.user.id = idCount;
-    this.user.name = name;
-    this.user.nickName = nickName;
-    this.user.email = email;
-    this.user.passwordHash = passwordHash;
-    this.user.shoppingBasket = new ShoppingBasket();
+    this.user = new User(idCount, name, nickName, email, passwordHash); // Új user generálása.
 
     userList.push(this.user); // Új user listához adása.
 
