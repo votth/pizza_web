@@ -218,7 +218,11 @@ export const pizzas: Pizza[] = [
     id: 501,
     name: 'Pizzo uno',
     dough: 'Extra thicc',
-    ingredients: [],
+    ingredients: [
+      ingredients[1],
+      ingredients[2],
+      ingredients[3]
+    ],
     ingredientsId: [1, 2, 3],
     price: 1500,
     rating: 3.6
@@ -227,7 +231,11 @@ export const pizzas: Pizza[] = [
     id: 502,
     name: 'Fishy pizza',
     dough: 'Extra thicc',
-    ingredients: [],
+    ingredients: [
+      ingredients[1],
+      ingredients[2],
+      ingredients[3]
+    ],
     ingredientsId: [1, 2, 3],
     price: 2000,
     rating: 4.1
@@ -236,7 +244,11 @@ export const pizzas: Pizza[] = [
     id: 503,
     name: 'Ananas pizza',
     dough: 'Extra thicc',
-    ingredients: [],
+    ingredients: [
+      ingredients[1],
+      ingredients[2],
+      ingredients[3]
+    ],
     ingredientsId: [1, 2, 3],
     price: 1999,
     rating: 2.3
@@ -245,7 +257,11 @@ export const pizzas: Pizza[] = [
     id: 504,
     name: 'Ninja pizza',
     dough: 'Extra thicc',
-    ingredients: [],
+    ingredients: [
+      ingredients[1],
+      ingredients[7],
+      ingredients[3]
+    ],
     ingredientsId: [1, 7, 3],
     price: 1650,
     rating: 2.7
@@ -254,8 +270,12 @@ export const pizzas: Pizza[] = [
     id: 505,
     name: 'Hungarian pizza',
     dough: 'Extra thicc',
-    ingredients: [],
-    ingredientsId: [1, 5, 3],
+    ingredients: [
+      ingredients[1],
+      ingredients[5],
+      ingredients[3]
+    ],
+    ingredientsId: [ 1, 5, 3],
     price: 1870,
     rating: 3.5
   },
@@ -263,7 +283,11 @@ export const pizzas: Pizza[] = [
     id: 506,
     name: 'Vietnamese pizza',
     dough: 'Extra thicc',
-    ingredients: [],
+    ingredients: [
+      ingredients[1],
+      ingredients[0],
+      ingredients[3]
+    ],
     ingredientsId: [1, 0, 3],
     price: 1800,
     rating: 3.5
@@ -272,8 +296,14 @@ export const pizzas: Pizza[] = [
     id: 507,
     name: 'Somogyi pizza',
     dough: 'Extra thicc',
-    ingredients: [],
-    ingredientsId: [2, 2, 2, 2, 2],
+    ingredients: [
+      ingredients[2],
+      ingredients[2],
+      ingredients[2],
+      ingredients[2],
+      ingredients[2]
+    ],
+    ingredientsId: [ 2, 2, 2, 2, 2],
     price: 2200,
     rating: 5
   }
