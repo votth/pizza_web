@@ -225,7 +225,7 @@ export const pizzas: Pizza[] = [
   {
     id: 501,
     name: 'Pizzo uno',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[2],
@@ -237,7 +237,7 @@ export const pizzas: Pizza[] = [
   {
     id: 502,
     name: 'Fishy pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[2],
@@ -249,7 +249,7 @@ export const pizzas: Pizza[] = [
   {
     id: 503,
     name: 'Ananas pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[2],
@@ -261,7 +261,7 @@ export const pizzas: Pizza[] = [
   {
     id: 504,
     name: 'Ninja pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[7],
@@ -273,7 +273,7 @@ export const pizzas: Pizza[] = [
   {
     id: 505,
     name: 'Hungarian pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[5],
@@ -285,7 +285,7 @@ export const pizzas: Pizza[] = [
   {
     id: 506,
     name: 'Vietnamese pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[1],
       ingredients[0],
@@ -297,7 +297,7 @@ export const pizzas: Pizza[] = [
   {
     id: 507,
     name: 'Somogyi pizza',
-    dough: 'Extra thicc',
+    dough: '',
     ingredients: [
       ingredients[2],
       ingredients[2],

@@ -17,6 +17,7 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
 
   buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
   buyPizza: Pizza;
+  selectedDough = 'empty';
 
   sortArray(param: string): void {
     super.sortArray(param);
@@ -34,6 +35,7 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
   buyItem(id: number): void {
     const findPizza: Pizza[] = pizzas.filter((p) => p.id === id);
     this.buyPizza = findPizza[0]; // Id alapján find pizza
+    if (this.buyPizza.dough === ''){ return; } // if dough is not selected return
     this.buyingUser.shoppingBasket.pizzas.push(this.buyPizza);
     localStorage.setItem('loggedInUser', JSON.stringify(this.buyingUser)); // shoppingbasket-be push
   }

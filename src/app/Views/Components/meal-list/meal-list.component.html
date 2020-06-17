@@ -37,7 +37,7 @@
       <th>dough</th>
       <th>ingredients</th>
       <th>rating</th>
-      <th>button</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
@@ -45,7 +45,16 @@
       <th>{{item.id}}</th>
       <td>{{item.name | titlecase}}</td>
       <td>{{item.price | currencyHuf}}</td>
-      <td>{{item.dough}}</td>
+      <td>
+        <label>
+          <select class="form-control" [(ngModel)]="item.dough">
+            <option value="" selected disabled hidden>Choose..</option>
+            <option value="thick">Thick</option>
+            <option value="thin">Thin</option>
+            <option value="extra">Extra Thicc</option>
+          </select>
+        </label>
+      </td>
       <td>
         <ng-container *ngFor="let ingredient of item.ingredients">
           {{ingredient.name}},
