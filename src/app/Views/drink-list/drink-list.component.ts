@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {drinks} from '../../HardDatabase/DatabaseHelper';
+import {drinks, pizzas} from '../../HardDatabase/DatabaseHelper';
 import {Drink} from '../../Models/Drink';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
+import {User} from '../../Models/Users';
+import {Pizza} from '../../Models/Pizza';
 
 @Component({
   selector: 'app-drink-list',
@@ -12,6 +14,20 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
 
   constructor() {
     super();
+    if (this.buyingUser.shoppingBasket.drinks === undefined) {
+      this.buyingUser.shoppingBasket.drinks = []; // local drink shopping list inicializálása
+    }
+  }
+
+  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
+  buyDrink;
+
+  // Italvásárlás
+  buyItem(id: number): void {
+    const findDrink: Drink[] = drinks.filter((d) => d.id === id);
+    this.buyDrink = findDrink[0]; // Id alapján find drink
+    this.buyingUser.shoppingBasket.drinks.push(this.buyDrink);
+    localStorage.setItem('loggedInUser', JSON.stringify(this.buyingUser)); // shoppingbasket-be push
   }
 
   ngOnInit(): void {

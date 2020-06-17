@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
 import {Pizza} from '../../Models/Pizza';
 import {pizzas} from '../../HardDatabase/DatabaseHelper';
+import {User} from '../../Models/Users';
+import {flattenInheritedDirectiveMetadata} from '@angular/compiler-cli/src/ngtsc/metadata/src/inheritance';
 
 @Component({
   selector: 'app-meal-list',
@@ -12,7 +14,13 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
 
   constructor() {
     super();
+    if (this.buyingUser.shoppingBasket.pizzas === undefined) {
+      this.buyingUser.shoppingBasket.pizzas = []; // local pizza shopping list inicializálása
+    }
   }
+
+  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
+  buyPizza: Pizza;
 
   sortArray(param: string): void {
     super.sortArray(param);
@@ -24,6 +32,14 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
         this.filteredList.sort(((a, b) => b.id - a.id ));
         break;
     }
+  }
+
+  // Pizzavásárlás
+  buyItem(id: number): void {
+    const findPizza: Pizza[] = pizzas.filter((p) => p.id === id);
+    this.buyPizza = findPizza[0]; // Id alapján find pizza
+    this.buyingUser.shoppingBasket.pizzas.push(this.buyPizza);
+    localStorage.setItem('loggedInUser', JSON.stringify(this.buyingUser)); // shoppingbasket-be push
   }
 
   ngOnInit(): void {
