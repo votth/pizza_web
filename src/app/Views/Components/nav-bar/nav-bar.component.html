@@ -39,7 +39,7 @@
             Bejelenkezés
         </a>
         <p class="navbar-text" *ngIf="getLoggedIn">Bejelentkezve: {{ getLoggedInUser.name }} ( {{ getLoggedInUser.nickName }} )</p>
-        <a href="" class="nav-item nav-link" *ngIf="getLoggedIn" (click)="logOut()">Kijelentkezés</a>
+        <a href="" id="logOutButton" class="nav-item nav-link" *ngIf="getLoggedIn" (click)="logOut()">Kijelentkezés</a>
       </div>
 
       <div class="modal fade" id="loginCenter">
