@@ -3,15 +3,15 @@
     <h1 class="h1 text-capitalize p-5">Üdvözöljük!</h1>
 
     <!-- Promotion page -->
-
     <h4>RENDELJ TŐLÜNK:</h4>
     <div class="row">
-
+      <!-- Directional button -->
       <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">SORREND NÉLKÜLI</button>
-
+      <!-- Modal form activator -->
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter">
         HÁZHOZSZÁLLITÁS
       </button>
+      <!-- Modal form -->
       <div class="modal fade" id="houseDeliveryCenter">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -41,10 +41,6 @@
                     <input type="number" class="form-control" id="inputZip" required/>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputPhoneNumber">Telefonszám</label>
-                  <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required/>
-                </div>
               </form>
             </div>
             <div class="modal-footer">
@@ -61,8 +57,10 @@
   </div>
   <br/>
 
+  <!-- Main body -->
   <div class="card align-items-center p-2">
     <div class="col-12">
+      <!-- Maybe introduction -->
       <div class="article">
         <h3>Title</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -90,7 +88,7 @@
         </div>
 
         <br/>
-
+        <!-- Might change to top 3 Drink -->
         <div class="card-deck">
           <div class="card" *ngFor="let item of filteredList | slice:4:7; let i=index">
             <img src="../../../../assets/images/{{item.name}}.png" class="card-img-top" alt="...">
@@ -109,7 +107,7 @@
         <a href="#" class="btn btn-success" style="text-transform:uppercase" id="menuButton" routerLink="/menu" (click)="navigate($event)">Menühöz</a>
       </div>
 
-      <!-- SpecialOffer table -->
+      <!-- SpecialOffer table, empty -->
       <div class="card-table">
         <h3 id="tableTitle">Special Offers</h3>
         <div class="card-deck">

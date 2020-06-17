@@ -6,50 +6,62 @@
   
       <h4>MEGRENDELEM:</h4>
       <div class="row">
-  
+        <!-- Directional button -->
         <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">Vissza Menühöz</button>
-  
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter">
+        <!-- Modal form -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#paymentCenter">
           Rendelés és fizetés
         </button>
-        <div class="modal fade" id="houseDeliveryCenter">
+        <div class="modal fade" id="paymentCenter">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">HÁZHOZSZÁLLITÁS INFO.</h5>
+                <h5 class="modal-title">FIZETÉS</h5>
               </div>
               <div class="modal-body">
                 <form #f="ngForm" ngNativeValidate>
+                  <!-- Delivery data -->
                   <div class="form-group">
-                    <label for="inputAddress">Cím</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required/>
+                    <label><h6>Szállítási adatok</h6></label>
+                    <p>This will appear if it is a homeDelivery</p>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputCity">Város</label>
-                      <input type="text" class="form-control" id="inputCity" required/>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputState">Megye</label>
-                      <select id="inputState" class="form-control">
-                        <option selected="">Válasz...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="inputZip">Zip</label>
-                      <input type="number" class="form-control" id="inputZip" required/>
+                  <!-- Pickup Order info -->
+                  <div class="form-group">
+                    <label for=""><h6>Ki veszi át a rendelést</h6></label>
+                    <div class="row">
+                      <div class="col-6">
+                        <label for="inputPhoneNumber">Telefonszám</label>
+                        <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required/>
+                      </div>
+                      <div class="col-6">
+                        <label>Kit kereshetünk?</label>
+                        <input type="text" class="form-control" placeholder="Teljes név" required/>
+                      </div>
                     </div>
                   </div>
+
+                  <!-- payment method -->
                   <div class="form-group">
-                    <label for="inputPhoneNumber">Telefonszám</label>
-                    <input type="number" class="form-control" id="inputPhoneNumber" placeholder="xx xxx xxxx" required/>
+                    <label><h6>Fizetési mód</h6></label><br/>
+                    <label>
+                      <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                      <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                        Online fizetés
+                      </div>
+                    </label>
+                    <label>
+                      <input type="radio" name="demo" class="card-input-element d-none" value="demo2">
+                      <div class="card card-body bg-light d-flex flex-row justify-content-between align-items-center">
+                        Készpénzes fizetés
+                      </div>
+                    </label>
+                  </div>
+                  <!-- form button -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fizetés</button>
                   </div>
                 </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/menu" (click)="navigate($event)">Menühez</button>
               </div>
             </div>
           </div>
@@ -61,6 +73,7 @@
     </div>
     <br/>
 
+    <!-- Basket display area -->
     <div class="card align-items-center p-2">
 
     </div>
