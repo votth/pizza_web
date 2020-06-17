@@ -3,6 +3,12 @@
       color: black;
     }
 
+button.btn.btn-success
+{
+  margin: 0 5px;
+}
+
+
 .article {
   padding: 2% 4%;
 }
@@ -11,10 +17,6 @@
   padding: 0 4%;
 }
 
-    #addOffer
-    {
-      display: inline-block;
-    }
 
 #tableTitle {
     border-top: 2px solid #111f45;
