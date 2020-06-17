@@ -1,0 +1,17 @@
+.welcome {
+  color: white;
+  background-image: url("https://cdn.portfolio.hu/articles/images-md/f/r/o/frozen-pizza-sales-go-through-the-roof-in-hungary-168921.jpg");
+  background-color: #111f45;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.bg-half-dark{
+  background: rgba(0, 0, 0, 0.5);
+}
+.bg-half-light{
+  background: rgba(255, 255, 255, 0.6);
+}
+.p-btn{
+  padding: 12px;
+}
