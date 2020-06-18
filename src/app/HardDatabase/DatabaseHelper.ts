@@ -110,7 +110,7 @@ export const ingredients: Ingredient[] = [
     id: 8,
     name: '28',
     price: 10,
-    picture: 'https://lh3.googleusercontent.com/proxy/QBOJ4mdIVyyTGQQ-xm-TKZ6hAHuBWfyiTaeEEmxINTGfRdsh9SPsFIpRekauOYecxAE3AZ_iUC0pSf4ECS-Qn6hN6813hUpo0q5tN0OsJaoq0Y141QlxboCwWhAn6GfNgxn8',
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/28_white%2C_red_rounded_rectangle.svg/1200px-28_white%2C_red_rounded_rectangle.svg.png',
     type: 'size'
   },
   {
@@ -124,14 +124,14 @@ export const ingredients: Ingredient[] = [
     id: 10,
     name: '45',
     price: 10,
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Augsburg_Bus_45.svg',
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Bundesautobahn_45_number.svg/1200px-Bundesautobahn_45_number.svg.png',
     type: 'size'
   },
   {
     id: 11,
     name: '60',
     price: 10,
-    picture: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Number_60.png',
+    picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Bundesautobahn_60_number.svg/1200px-Bundesautobahn_60_number.svg.png',
     type: 'size'
   },
   // tészta típusok
