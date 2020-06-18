@@ -12,7 +12,7 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#paymentCenter">
           Rendelés és fizetés
         </button>
-        <div class="modal fade" id="paymentCenter">
+        <div class="modal fade" id="paymentCenter" *ngIf="orderType !== 'nonOrder'">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -127,4 +127,21 @@
       </div>
     </div>
     <br/>
+</div>
+
+<!--AUTHORIZATION CONFLICT MODAL-->
+<div class="modal fade" id="paymentCenter" *ngIf="orderType === 'nonOrder'">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HOPPÁ!</h5>
+      </div>
+      <div class="modal-body">
+        <p>Nem választottál ki szállítási módot!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
 </div>

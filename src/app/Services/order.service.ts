@@ -86,4 +86,19 @@ export class OrderService {
     this.basketService.emtpyBasket(user.shoppingBasket);
     this.flushOrder();
   }
+
+  sendToUserOrder(user: User, address: Address, phone: number, contactName: string, payment: string): void {
+    console.log('*Send order to restaurant:');
+    console.log('User: ', user.name, '; ' , user.email);
+    console.log('Contact: ', contactName, '; Phone: ', phone);
+    console.log('Order type: To User');
+    console.log('Address: ', address.county, ', ', address.city, ', ', address.zipCode, '; ', address.address);
+    console.log('Orders:');
+    console.log(user.shoppingBasket.pizzas, user.shoppingBasket.drinks);
+    console.log('Price: ', user.shoppingBasket.sumPrice);
+    console.log('Payment method: ', payment);
+    this.basketService.emtpyBasket(user.shoppingBasket);
+    this.deleteAddress();
+    this.flushOrder();
+  }
 }

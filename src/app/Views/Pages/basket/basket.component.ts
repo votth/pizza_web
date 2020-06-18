@@ -36,6 +36,11 @@ export class BasketComponent implements OnInit, AfterViewChecked {
       this.userService.refreshUser(this.buyingUser);
       this.buttonClose.nativeElement.click();
       this.router.navigate(['']);
+    } else {
+      this.orderService.sendToUserOrder(this.buyingUser, this.buyingAddress, value.phone, value.contactName, value.payment);
+      this.userService.refreshUser(this.buyingUser);
+      this.buttonClose.nativeElement.click();
+      this.router.navigate(['']);
     }
   }
 
