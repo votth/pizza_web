@@ -19,6 +19,7 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
 
   buyingUser: User = this.userService.getLoggedInUser();
   buyPizza: Pizza;
+  loggedIn: string;
 
   sortArray(param: string): void {
     super.sortArray(param);
@@ -34,21 +35,28 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
 
   // Pizzavásárlás
   buyItem(id: number): void {
-    const findPizza: Pizza[] = pizzas.filter((p) => p.id === id);
-    this.buyPizza = findPizza[0]; // Id alapján find pizza
-    this.basketService.pushPizzaToBasket(this.buyPizza, this.buyingUser.shoppingBasket);
-    this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
+    if (this.loggedIn) {
+      const findPizza: Pizza[] = pizzas.filter((p) => p.id === id);
+      this.buyPizza = findPizza[0]; // Id alapján find pizza
+      this.basketService.pushPizzaToBasket(this.buyPizza, this.buyingUser.shoppingBasket);
+      this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
+    }
   }
 
   ngOnInit(): void {
     super.ngOnInit();
     this.list = this.list.concat(pizzas);
     this.filteredList = this.list;
+    this.loggedIn = this.userService.getLoginToken();
   }
 
+  // Always Up-To-Date initializer
   ngAfterContentChecked(): void {
     if (this.buyingUser !== this.userService.getLoggedInUser()) {
       this.buyingUser = this.userService.getLoggedInUser();
+    }
+    if (this.loggedIn !== this.userService.getLoginToken()) {
+      this.loggedIn = this.userService.getLoginToken();
     }
   }
 
