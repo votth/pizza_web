@@ -13,7 +13,6 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
   filteredList: T[] = [];
   sortParam: string;
   currSortParam: string;
-  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
 
   get listFilter(): string {
     return this._listFilter;
