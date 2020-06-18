@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
-import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
+import {OrderService} from './order.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
 
   user: User;
 
-  constructor() {
+  constructor(private orderService: OrderService) {
     // Backendről user lista inicializálás (ha még nincs).
     if (!localStorage.getItem('users')) {
       this.storeUsers(users);
@@ -35,6 +35,7 @@ export class UserService {
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
+    this.orderService.initOrder();
   }
 
   getLoggedInUser(): User {
@@ -65,6 +66,8 @@ export class UserService {
   logoutUser(): void {
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('loggedInUser');
+    this.orderService.deleteOrder();
+    this.orderService.deleteAddress();
   }
 
   // User keresése az adatbázisban.

@@ -6,46 +6,47 @@
     <h4>RENDELJ TŐLÜNK:</h4>
     <div class="row">
       <!-- Directional button -->
-      <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">UGRÁS A MENÜHÖZ</button>
+      <button type="button" #buttonHere class="btn btn-success" data-toggle="modal" data-target="#loginWarnModal2" (click)="navigateIfLoggedIn(); hereButtonClicked()">ÁTVÉTEL HELYBEN</button>
       <!-- Modal form activator -->
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter" (click)="homeOrderButtonClicked()">
         HÁZHOZSZÁLLITÁS
       </button>
       <!-- Modal form -->
-      <div class="modal fade" id="houseDeliveryCenter">
+      <div class="modal fade" id="houseDeliveryCenter" *ngIf="orderType">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">HÁZHOZSZÁLLITÁS INFO.</h5>
+              <h5 class="modal-title">HÁZHOZSZÁLLITÁS</h5>
             </div>
             <div class="modal-body">
-              <form #f="ngForm" ngNativeValidate>
+              <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
                 <div class="form-group">
                   <label for="inputAddress">Cím</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required/>
+                  <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St" ngModel required/>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputCity">Város</label>
-                    <input type="text" class="form-control" id="inputCity" required/>
+                    <input type="text" class="form-control" name="city" id="inputCity" ngModel required/>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="inputState">Megye</label>
-                    <select id="inputState" class="form-control">
+                    <select id="inputState" name="county" class="form-control" ngModel>
                       <option selected="">Válasz...</option>
-                      <option>...</option>
+                      <option>Baranya</option>
+                      <option>Zala</option>
                     </select>
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
-                    <input type="number" class="form-control" id="inputZip" required/>
+                    <input type="number" class="form-control" name="zipCode" id="inputZip" ngModel required/>
                   </div>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" #buttonClose class="btn btn-secondary" data-dismiss="modal" (click)="closeButtonClicked()">Bezár</button>
+                  <button type="submit" class="btn btn-success">Menühöz</button>
+                </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezár</button>
-              <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/menu" (click)="navigate($event)">Menühöz</button>
             </div>
           </div>
         </div>
@@ -144,4 +145,44 @@
   </div>
 
   <br>
+</div>
+
+<!--AUTHORIZATION CONFLICT MODAL FOR HOUSE DELIVERY-->
+<div class="modal fade" id="houseDeliveryCenter" *ngIf="!orderType">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HOPPÁ!</h5>
+      </div>
+      <div class="modal-body">
+        <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        <a href="#">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginCenter">Bejelentkezés</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--AUTHORIZATION CONFLICT MODAL-->
+<div class="modal fade" id="loginWarnModal2" *ngIf="!orderType">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HOPPÁ!</h5>
+      </div>
+      <div class="modal-body">
+        <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        <a href="#">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginCenter">Bejelentkezés</button>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
