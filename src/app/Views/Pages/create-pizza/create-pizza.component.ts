@@ -15,6 +15,8 @@ export class CreatePizzaComponent implements OnInit {
   addToCartEnableTimerCounter = 750;
 
   pizzaQuantity = 1;
+  pizzaQuantityMax = 20;
+  pizzaQuantityMin = 1;
   pizzaName: string;
 
   headerText = 'Dobjad össze saját pizzádat';
@@ -172,7 +174,11 @@ export class CreatePizzaComponent implements OnInit {
   }
 
   SetPizzaQuantity() {
-    this.pizzaQuantity = +(document.getElementById('pizza-quantity') as HTMLInputElement).value;
+    const quantity = +(document.getElementById('pizza-quantity') as HTMLInputElement).value;
+
+    this.pizzaQuantity = this.pizzaQuantityMax < quantity ? this.pizzaQuantityMax :
+      quantity < this.pizzaQuantityMin ? this.pizzaQuantityMin : quantity;
+
     console.log(this.pizzaQuantity);
   }
 }

@@ -1,34 +1,47 @@
+<style type="text/css">
+  #cp-content-ingredient-select {
+  }
+</style>
 <div class="container-sm ">
-  <h1 class="text-center">{{headerText}}</h1>
-  <h3 class="text-center">{{phases[actualPhase].text}}</h3>
-  <div class="row">
-    <button class="col-1 btn btn-secondary" (click)="PreviousPhase()">
+  <div id="cp-header">
+    <p id="cp-header-text" class="h1 text-center">{{headerText}}</p>
+  </div>
+  <div id="cp-message">
+    <h3 id="cp-message-text" class="text-center">{{phases[actualPhase].text}}</h3>
+  </div>
+  <div id="cp-navigation" class="row">
+    <button id="cp-navigation-left" class="btn btn-secondary" (click)="PreviousPhase()">
       <i class="fa fa-chevron-left"></i>
     </button>
-
-    <button class="col-1 offset-10 btn btn-secondary" *ngIf="phases[actualPhase].name !== 'finish'" style="text-align: center" (click)="NextPhase()">
+    <button id="cp-navigation-right" class="btn btn-secondary"
+            *ngIf="phases[actualPhase].name !== 'finish'" style="text-align: center" (click)="NextPhase()">
       <i class="fa fa-chevron-right"></i>
     </button>
-    <button class="col-1 offset-10 btn btn-secondary" *ngIf="phases[actualPhase].name === 'finish'" [disabled]="!addToCartEnable" style="text-align: center" (click)="AddToCart()">
+    <button id="cp-navigation-cart" class="btn btn-secondary"
+            *ngIf="phases[actualPhase].name === 'finish'" [disabled]="!addToCartEnable" style="text-align: center"
+            (click)="AddToCart()">
       <i class="fa fa-cart-plus fa-2x"></i>
     </button>
   </div>
-  <div class="row">
-    <div class="col-12 col-md-4 p-2 ingredient-selector"
+  <div id="cp-content" class="row">
+    <div id="cp-content-card"
+         class="col-12 col-md-4 p-2 ingredient-selector"
          [id]="'ingredient-selector-'+pizzaIngredientSelector.ingredient.name"
          (click)="SelectItem($event.target, pizzaIngredientSelector.ingredient.name)"
          *ngFor="let pizzaIngredientSelector of phases[actualPhase].pizzaIngredientSelectors"
     >
-      <div class="card px-2"
-           [style]="pizzaIngredientSelector.selected?'background-color: #111f45':'background-color: transparent'"
+      <div id="cp-content-ingredient-select" class="card"
+           [style]="pizzaIngredientSelector.selected?'background-color: #5f5f66':'background-color: transparent'"
            *ngIf="phases[actualPhase].name !== 'finish'">
-        <img class="img-fluid" src="{{pizzaIngredientSelector.ingredient.picture}}" alt="">
-        <h4 class="text-center p-2 border-info border">{{pizzaIngredientSelector.ingredient.name}}</h4>
+        <div>
+          <img class="rounded" src="{{pizzaIngredientSelector.ingredient.picture}}" alt="">
+        </div>
+        <p class="text-center p-2 ">{{pizzaIngredientSelector.ingredient.name}}</p>
       </div>
-      <div class="card px-2"  *ngIf="phases[actualPhase].name === 'finish'">
-        <label for="pizza-quantity">db</label>
-        <input id="pizza-quantity" type="number" max="20" min="1" [value]="pizzaQuantity" (change)="SetPizzaQuantity()">
-      </div>
+    </div>
+    <div id="cp-content-quantity" class="card px-2" *ngIf="phases[actualPhase].name === 'finish'">
+      <p>ide nagyon sok szám elfér de max 20 pizzát tudsz felvenni egy körben</p>
+      <input id="pizza-quantity" class="form-control" type="number" max="20" min="1" [value]="pizzaQuantity" (change)="SetPizzaQuantity()">
     </div>
   </div>
 </div>
