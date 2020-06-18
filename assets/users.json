@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 101,
+      "name": "John Wick",
+      "nick_name": "Neo",
+      "email": "neomatrix1999@gmail.com",
+      "password": "somethingThatIsHashed"
+    },
+    {
+      "id": 123,
+      "name": "Arnold Commando",
+      "nick_name": "Predator4ever",
+      "email": "kingofcalirornia@gmail.com",
+      "password": "somethingThatIsHashedToo"
+    },
+    {
+      "id": 123,
+      "name": "Benjamin Big",
+      "nick_name": "VinoRosso",
+      "email": "siticola@lidl.com",
+      "password": "somethingThatIsHashedTooToo"
+    }
+  ]
+}
