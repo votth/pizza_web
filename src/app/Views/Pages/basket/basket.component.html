@@ -1,9 +1,9 @@
 <div class="card-body-main">
+    <!-- Header -->
     <div class="card align-items-center" id="welcome">
       <h1 class="h1 text-capitalize p-5">A Kosarad</h1>
-  
-      <!-- Promotion page -->
-  
+      
+      <!-- Header Buttons -->
       <h4>MEGRENDELEM:</h4>
       <div class="row">
         <!-- Directional button -->
@@ -73,8 +73,57 @@
     </div>
     <br/>
 
-    <!-- Basket display area -->
-    <div class="card align-items-center p-2">
-
+    <!-- Main body -->
+    <div class="row">
+      <!-- Basket display area -->
+      <div class="col-9">
+        <div class="card align-items-center p-1">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Printing out value from array -->
+              <tr *ngFor=" let item of basketPizzas; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currencyHuf }}</td>
+              </tr>
+              <tr *ngFor=" let item of basketDrinks; let j = index">
+                <th scope="row">{{basketPizzas.length+j+1}}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currencyHuf }}</td>
+              </tr>
+              <tr>
+                <th><br/></th>
+                <td><br/></td>
+                <td><br/></td>
+              </tr>
+              <tr>
+                <th scope="row">VÉGÖSSZEGE</th>
+                <td></td>
+                <td>{{ basketPrice | currencyHuf }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- orderType change option -->
+      <div class="col-3">
+        <div class="card align-items-center p-2">
+          <form>
+            <h6>Current Order type: </h6>
+            <br/>
+            <div class="align-items-center">
+              <button class="btn btn-success">Button to change Order type</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+    <br/>
 </div>

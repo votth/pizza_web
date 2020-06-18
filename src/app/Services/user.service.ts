@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Models/Users';
-import { ShoppingBasket } from '../Models/ShoppingBasket';
 import { users } from '../HardDatabase/DatabaseHelper';
+import {OrderService} from './order.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService {
 
   user: User;
 
-  constructor() {
+  constructor(private orderService: OrderService) {
     // Backendről user lista inicializálás (ha még nincs).
     if (!localStorage.getItem('users')) {
       this.storeUsers(users);
@@ -31,10 +31,43 @@ export class UserService {
     this.storeUsers(userList); // Frissült lista eltárolása.
   }
 
-  // User loggedI in kezelés a GUARD-hoz.
+  // User logged in kezelés
   loginUser(user: User) {
     localStorage.setItem('loggedIn', JSON.stringify(true));
     localStorage.setItem('loggedInUser', JSON.stringify(user));
+    this.orderService.initOrder();
+  }
+
+  getLoggedInUser(): User {
+    let loggedInUser: User;
+    if (localStorage.getItem('loggedInUser')) {
+      loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      return loggedInUser;
+    } else {
+      loggedInUser = new User();
+      return loggedInUser;
+    }
+  }
+
+  getLoginToken(): string {
+    const token = localStorage.getItem('loggedIn');
+    if (token !== undefined) {
+      return token;
+    }
+    else {
+      return undefined;
+    }
+  }
+
+  refreshUser(loggedInUser: User): void {
+    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+  }
+
+  logoutUser(): void {
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('loggedInUser');
+    this.orderService.deleteOrder();
+    this.orderService.deleteAddress();
   }
 
   // User keresése az adatbázisban.

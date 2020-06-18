@@ -62,11 +62,31 @@
       </td>
       <td><app-five-star [rating]="item.rating" ></app-five-star></td>
       <td>
-        <button class="btn btn-primary" (click)="buyItem(item.id)">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#loginWarnModal2" (click)="buyItem(item.id)">
           <i class="fa fa-shopping-cart pr-1"></i>Buy
         </button>
       </td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<!--AUTHORIZATION CONFLICT MODAL-->
+<div class="modal fade" id="loginWarnModal2" *ngIf="!loggedIn">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HOPPÁ!</h5>
+      </div>
+      <div class="modal-body">
+        <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        <a href="#">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginCenter">Bejelentkezés</button>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>

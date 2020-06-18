@@ -5,6 +5,8 @@ import {User} from '../../../Models/Users';
 
 export abstract class AbstractListComponent<T extends Pizza | Drink> implements OnInit {
 
+  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
+
   // tslint:disable-next-line:variable-name
   private _listFilter: string;
   list: T[] = [];
@@ -64,7 +66,13 @@ export abstract class AbstractListComponent<T extends Pizza | Drink> implements 
     if (this.buyingUser !== null) {
       console.log('tryingtouser');
       if (this.buyingUser.shoppingBasket.pizzas === undefined) {
-        this.buyingUser.shoppingBasket.pizzas = []; // local pizza shopping list inicializálása
+        this.buyingUser.shoppingBasket.pizzas = []; // local pizza shopping list inicializálása (ha nincs)
+      }
+      if (this.buyingUser.shoppingBasket.drinks === undefined) {
+        this.buyingUser.shoppingBasket.drinks = []; // local drink shopping list inicializálása (ha nincs)
+      }
+      if (this.buyingUser.shoppingBasket.sumPrice === undefined) {
+        this.buyingUser.shoppingBasket.sumPrice = 0; // local sumPrice inicializálása (ha nincs)
       }
     }
   }

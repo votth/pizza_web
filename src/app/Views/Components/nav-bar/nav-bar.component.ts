@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../Services/user.service';
 import {Md5} from 'ts-md5';
 import {User} from '../../../Models/Users';
-import {AuthGuard} from '../../../Guards/auth.guard';
+import {ShoppingBasketService} from '../../../Services/shopping-basket.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,12 +16,12 @@ export class NavBarComponent implements OnInit {
   email: string;
   password;
   errorChecker = false;
-  getLoggedIn;
+  getLoggedIn: string;
   getLoggedInUser: User;
 
-  constructor(private userService: UserService) {
-    this.getLoggedIn = localStorage.getItem('loggedIn');
-    this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  constructor(private userService: UserService, private basketService: ShoppingBasketService) {
+    this.getLoggedIn = userService.getLoginToken();
+    this.getLoggedInUser = userService.getLoggedInUser();
     console.log(this.getLoggedIn);
   }
 
@@ -43,7 +43,7 @@ export class NavBarComponent implements OnInit {
       console.log(this.password);
       this.userService.loginUser(user);
       this.closeButton.nativeElement.click();
-      this.getLoggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+      this.getLoggedInUser = this.userService.getLoggedInUser();
     } else {
       this.errorChecker = true;
       console.log('not logged in, values: ');
@@ -51,20 +51,17 @@ export class NavBarComponent implements OnInit {
       console.log(this.password);
     }
 
-    this.getLoggedIn = localStorage.getItem('loggedIn');
+    this.getLoggedIn = this.userService.getLoginToken();
     console.log(this.getLoggedIn);
   }
 
   logOut(): void {
-    localStorage.removeItem('loggedInUser');
-    localStorage.removeItem('loggedIn');
+    this.userService.logoutUser();
   }
 
   emptyBasket(): void {
-    this.getLoggedInUser.shoppingBasket.pizzas = undefined;
-    this.getLoggedInUser.shoppingBasket.drinks = undefined;
-    /*this.getLoggedInUser.shoppingBasket.sumPrice = 0;*/
-    localStorage.setItem('loggedInUser', JSON.stringify(this.getLoggedInUser));
+    this.basketService.emtpyBasket(this.getLoggedInUser.shoppingBasket);
+    this.userService.refreshUser(this.getLoggedInUser);
   }
 
   navigate(page: Event) {

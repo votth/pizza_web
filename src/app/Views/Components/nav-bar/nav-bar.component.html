@@ -14,10 +14,10 @@
         <a href="#" class="nav-item nav-link" routerLink="/create-pizza" data-toggle="modal" data-target="#loginWarnModal" (click)="navigate($event)">Create own pizza</a>
         <!--DROPDOWN NEEDS RESPONSIBILITY-->
         <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Kosár</a>
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="getLoggedIn">Kosár</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Go to</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#confirmEmptyModal">Empty Basket</a>
+            <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Kosárhoz</a>
+            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#confirmEmptyModal">Kiürítés</a>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégse</button>
               <a href="#">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="emptyBasket()">Törlés</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="emptyBasket()" onClick="window.location.reload();">Törlés</button>
               </a>
             </div>
           </div>
@@ -102,6 +102,7 @@
     </div>
   </nav>
 
+  <!--AUTHORIZATION CONFLICT MODAL-->
   <div class="modal fade" id="loginWarnModal" *ngIf="!getLoggedIn">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
