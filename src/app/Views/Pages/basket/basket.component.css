@@ -3,6 +3,17 @@ button.btn.btn-success
   margin: 0 5px;
 }
 
+.btn
+{
+  white-space: normal;
+}
+
+.card.align-items-center.p-2
+{
+  padding: 5% 2% !important;
+}
+
+
 label {
   width: 100%;
   font-size: 1rem;
