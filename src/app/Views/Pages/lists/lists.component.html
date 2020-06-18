@@ -1,4 +1,4 @@
-<div class="card-body m-auto">
+<div class="card-body-main m-auto">
 
 
   <div class="card align-items-center welcome border-0">
@@ -15,7 +15,7 @@
       <h1 class="h1 text-light bg-half-dark rounded p-2 pr-5 pl-5">{{pageTitle}}</h1>
     </div>
   </div>
-
+  <br/>
   <app-meal-list *ngIf="currPage == 'pizzas'"></app-meal-list>
   <app-drink-list *ngIf="currPage == 'drinks'"></app-drink-list>
 </div>
