@@ -4,6 +4,7 @@ import {Pizza} from '../../../Models/Pizza';
 import {pizzas} from '../../../HardDatabase/DatabaseHelper';
 import {User} from '../../../Models/Users';
 import {UserService} from '../../../Services/user.service';
+import {ShoppingBasketService} from '../../../Services/shopping-basket.service';
 
 @Component({
   selector: 'app-meal-list',
@@ -12,7 +13,7 @@ import {UserService} from '../../../Services/user.service';
 })
 export class MealListComponent extends AbstractListComponent<Pizza> implements OnInit, AfterContentChecked{
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private basketService: ShoppingBasketService) {
     super();
   }
 
@@ -35,7 +36,7 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
   buyItem(id: number): void {
     const findPizza: Pizza[] = pizzas.filter((p) => p.id === id);
     this.buyPizza = findPizza[0]; // Id alapján find pizza
-    this.buyingUser.shoppingBasket.pizzas.push(this.buyPizza);
+    this.basketService.pushPizzaToBasket(this.buyPizza, this.buyingUser.shoppingBasket);
     this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
   }
 
@@ -43,7 +44,6 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
     super.ngOnInit();
     this.list = this.list.concat(pizzas);
     this.filteredList = this.list;
-    this.buyingUser = this.userService.getLoggedInUser();
   }
 
   ngAfterContentChecked(): void {

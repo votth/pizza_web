@@ -4,6 +4,7 @@ import {Drink} from '../../../Models/Drink';
 import {AbstractListComponent} from '../abstract-list/abstract-list.component';
 import {User} from '../../../Models/Users';
 import {UserService} from '../../../Services/user.service';
+import {ShoppingBasketService} from '../../../Services/shopping-basket.service';
 
 @Component({
   selector: 'app-drink-list',
@@ -12,18 +13,18 @@ import {UserService} from '../../../Services/user.service';
 })
 export class DrinkListComponent extends AbstractListComponent<Drink> implements OnInit, AfterContentChecked {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private basketService: ShoppingBasketService) {
     super();
   }
 
-  buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));
+  buyingUser: User = this.userService.getLoggedInUser();
   buyDrink;
 
   // Italvásárlás
   buyItem(id: number): void {
     const findDrink: Drink[] = drinks.filter((d) => d.id === id);
     this.buyDrink = findDrink[0]; // Id alapján find drink
-    this.buyingUser.shoppingBasket.drinks.push(this.buyDrink);
+    this.basketService.pushDrinkToBasket(this.buyDrink, this.buyingUser.shoppingBasket);
     this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
   }
 
@@ -31,7 +32,6 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
     super.ngOnInit();
     this.list = this.list.concat(drinks);
     this.filteredList = this.list;
-    // máté abstract list-ben keresd az if-et
   }
 
   ngAfterContentChecked(): void {

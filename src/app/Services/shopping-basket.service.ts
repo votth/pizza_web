@@ -17,6 +17,17 @@ export class ShoppingBasketService {
     basket.sumPrice = 0;
   }
 
+  // Pizza kosárhoz adása
+  pushPizzaToBasket(pizza: Pizza, basket: ShoppingBasket) {
+    basket.pizzas.push(pizza);
+    basket.sumPrice += pizza.price;
+  }
+
+  pushDrinkToBasket(drink: Drink, basket: ShoppingBasket) {
+    basket.drinks.push(drink);
+    basket.sumPrice += drink.price;
+  }
+
   // Basket adatkinyerő
   getBasketPizzas(basket: ShoppingBasket): Pizza[] {
     const basketPizzas = basket.pizzas;
