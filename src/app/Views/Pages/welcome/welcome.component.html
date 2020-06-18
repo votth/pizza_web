@@ -6,7 +6,7 @@
     <h4>RENDELJ TŐLÜNK:</h4>
     <div class="row">
       <!-- Directional button -->
-      <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">SORREND NÉLKÜLI</button>
+      <button type="button" class="btn btn-success" routerLink="/menu" (click)="navigate($event)">UGRÁS A MENÜHÖZ</button>
       <!-- Modal form activator -->
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#houseDeliveryCenter">
         HÁZHOZSZÁLLITÁS
@@ -53,7 +53,7 @@
 
     </div>
     <br/>
-    
+
   </div>
   <br/>
 
@@ -78,7 +78,7 @@
             <img src="../../../../assets/images/{{item.name}}.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{item.name | titlecase}}</h5>
-              <p class="card-text">        
+              <p class="card-text">
                 <ng-container *ngFor="let ingredient of item.ingredients">
                   {{ingredient.name}},
                 </ng-container>
@@ -94,7 +94,7 @@
             <img src="../../../../assets/images/{{item.name}}.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{item.name | titlecase}}</h5>
-              <p class="card-text">        
+              <p class="card-text">
                 <ng-container *ngFor="let ingredient of item.ingredients">
                   {{ingredient.name}},
                 </ng-container>

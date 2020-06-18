@@ -19,24 +19,32 @@ export class DrinkListComponent extends AbstractListComponent<Drink> implements 
 
   buyingUser: User = this.userService.getLoggedInUser();
   buyDrink;
+  loggedIn: string;
 
   // Italvásárlás
   buyItem(id: number): void {
-    const findDrink: Drink[] = drinks.filter((d) => d.id === id);
-    this.buyDrink = findDrink[0]; // Id alapján find drink
-    this.basketService.pushDrinkToBasket(this.buyDrink, this.buyingUser.shoppingBasket);
-    this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
+    if (this.loggedIn) {
+      const findDrink: Drink[] = drinks.filter((d) => d.id === id);
+      this.buyDrink = findDrink[0]; // Id alapján find drink
+      this.basketService.pushDrinkToBasket(this.buyDrink, this.buyingUser.shoppingBasket);
+      this.userService.refreshUser(this.buyingUser); // shoppingbasket-be push
+    }
   }
 
   ngOnInit(): void {
     super.ngOnInit();
     this.list = this.list.concat(drinks);
     this.filteredList = this.list;
+    this.loggedIn = this.userService.getLoginToken();
   }
 
+  // Always Up-To-Date initializer
   ngAfterContentChecked(): void {
     if (this.buyingUser !== this.userService.getLoggedInUser()) {
       this.buyingUser = this.userService.getLoggedInUser();
+    }
+    if (this.loggedIn !== this.userService.getLoginToken()) {
+      this.loggedIn = this.userService.getLoginToken();
     }
   }
 }
