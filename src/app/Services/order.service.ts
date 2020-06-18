@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Address} from '../Models/address';
+import {ShoppingBasketService} from './shopping-basket.service';
+import {User} from '../Models/Users';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor() { }
+  constructor(private basketService: ShoppingBasketService) { }
 
   initOrder(): void {
     if (!localStorage.getItem('orderType')) {
@@ -69,5 +72,18 @@ export class OrderService {
     if (localStorage.getItem('orderAddress')) {
       localStorage.removeItem('orderAddress');
     }
+  }
+
+  sendHereOrder(user: User, phone: number, contactName: string, payment: string): void {
+    console.log('*Send order to restaurant:');
+    console.log('User: ', user.name, '; ' , user.email);
+    console.log('Contact: ', contactName, '; Phone: ', phone);
+    console.log('Order type: Takeout');
+    console.log('Orders:');
+    console.log(user.shoppingBasket.pizzas, user.shoppingBasket.drinks);
+    console.log('Price: ', user.shoppingBasket.sumPrice);
+    console.log('Payment method: ', payment);
+    this.basketService.emtpyBasket(user.shoppingBasket);
+    this.flushOrder();
   }
 }
