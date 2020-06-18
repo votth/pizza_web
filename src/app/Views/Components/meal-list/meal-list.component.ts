@@ -17,9 +17,9 @@ export class MealListComponent extends AbstractListComponent<Pizza> implements O
     super();
   }
 
-  buyPizza: Pizza;
   selectedDough = 'empty';
   buyingUser: User = this.userService.getLoggedInUser();
+  buyPizza: Pizza;
   loggedIn: string;
 
   sortArray(param: string): void {
