@@ -44,14 +44,14 @@ import {UserService} from './Services/user.service';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: '', component: WelcomeComponent, pathMatch: 'full'},
-      {path: 'create-pizza', component: CreatePizzaComponent, canActivate: [AuthGuard]},
-      {path: 'register', component: RegisterComponent},
-      {path: 'reset-password', component: ResetPasswordComponent},
-      {path: 'menu', component: ListsComponent},
-      {path: 'basket', component: BasketComponent},
-      {path: '**', component: PageNotFoundComponent},
-    ]),
+    { path: '', component: WelcomeComponent, pathMatch: 'full' },
+    { path: 'create-pizza', component: CreatePizzaComponent, canActivate: [AuthGuard] },
+    { path: 'register', component: RegisterComponent },
+    { path: 'reset-password', component: ResetPasswordComponent },
+    { path: 'menu', component: ListsComponent },
+    { path: 'basket', component: BasketComponent },
+    { path: '**', component: PageNotFoundComponent },
+], { relativeLinkResolution: 'legacy' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule

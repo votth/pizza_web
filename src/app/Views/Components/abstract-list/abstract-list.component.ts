@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, Directive } from '@angular/core';
 import {Pizza} from '../../../Models/Pizza';
 import {Drink} from '../../../Models/Drink';
 import {User} from '../../../Models/Users';
 
+@Directive()
 export abstract class AbstractListComponent<T extends Pizza | Drink> implements OnInit {
 
   buyingUser: User = JSON.parse(localStorage.getItem('loggedInUser'));

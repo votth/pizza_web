@@ -1,47 +1,105 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+  <div class="navbar-brand">Brand</div>
 
-  <nav class="navbar navbar-expand-xl navbar-light bg-light">
+  <button
+    type="button"
+    class="navbar-toggler"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-brand">Brand</div>
+  <div
+    class="collapse navbar-collapse justify-content-between"
+    id="navbarCollapse"
+  >
+    <div class="navbar-nav">
+      <a
+        href="#"
+        class="nav-item nav-link active"
+        routerLink="/"
+        (click)="navigate($event)"
+        >Home</a
+      >
+      <a
+        href="#"
+        class="nav-item nav-link"
+        routerLink="/menu"
+        (click)="navigate($event)"
+        >Menü</a
+      >
+      <a
+        href="#"
+        class="nav-item nav-link"
+        routerLink="/create-pizza"
+        data-toggle="modal"
+        data-target="#loginWarnModal"
+        (click)="navigate($event)"
+        >Create own pizza</a
+      >
+      <!--DROPDOWN NEEDS RESPONSIBILITY-->
+      <div class="nav-item dropdown">
+        <a
+          href="#"
+          class="nav-link dropdown-toggle"
+          data-toggle="dropdown"
+          *ngIf="getLoggedIn"
+          >Kosár</a
+        >
+        <div class="dropdown-menu">
+          <a
+            href="#"
+            class="dropdown-item"
+            routerLink="/basket"
+            (click)="navigate($event)"
+            >Kosárhoz</a
+          >
+          <a
+            href="#"
+            class="dropdown-item"
+            data-toggle="modal"
+            data-target="#confirmEmptyModal"
+            >Kiürítés</a
+          >
+        </div>
+      </div>
+    </div>
 
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-      <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link active" routerLink="/" (click)="navigate($event)">Home</a>
-        <a href="#" class="nav-item nav-link" routerLink="/menu" (click)="navigate($event)">Menü</a>
-        <a href="#" class="nav-item nav-link" routerLink="/create-pizza" data-toggle="modal" data-target="#loginWarnModal" (click)="navigate($event)">Create own pizza</a>
-        <!--DROPDOWN NEEDS RESPONSIBILITY-->
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" *ngIf="getLoggedIn">Kosár</a>
-          <div class="dropdown-menu">
-            <a href="#" class="dropdown-item" routerLink="/basket" (click)="navigate($event)">Kosárhoz</a>
-            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#confirmEmptyModal">Kiürítés</a>
+    <div class="modal fade" id="confirmEmptyModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">KOSÁR TARTALMÁNAK TÖRLÉSE</h5>
+          </div>
+          <div class="modal-body">
+            <p>Biztos vagy benne, hogy törlöd a kosár tartalmát?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Mégse
+            </button>
+            <a href="#">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-dismiss="modal"
+                (click)="emptyBasket()"
+                onClick="window.location.reload();"
+              >
+                Törlés
+              </button>
+            </a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="modal fade" id="confirmEmptyModal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">KOSÁR TARTALMÁNAK TÖRLÉSE</h5>
-            </div>
-            <div class="modal-body">
-              <p>Biztos vagy benne, hogy törlöd a kosár tartalmát?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégse</button>
-              <a href="#">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="emptyBasket()" onClick="window.location.reload();">Törlés</button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!--SEARCH NEEDS REWRITE-->
+    <!-- SEARCH NEEDS REWRITE
       <form class="form-inline">
         <div class="input-group">
           <label>
@@ -51,73 +109,136 @@
             <button type="button" class="btn btn-secondary"><i class="fa fa-search"></i></button>
           </div>
         </div>
-      </form>
-      <!--LOGIN BUTTON-->
-      <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#loginCenter" *ngIf="!getLoggedIn">
-            Bejelenkezés
-        </a>
-        <p class="navbar-text" *ngIf="getLoggedIn">Bejelentkezve: {{ getLoggedInUser.name }} ( {{ getLoggedInUser.nickName }} )</p>
-        <a href="" id="logOutButton" class="nav-item nav-link" *ngIf="getLoggedIn" (click)="logOut()">Kijelentkezés</a>
-      </div>
-
-      <div class="modal fade" id="loginCenter">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">BEJELENKEZÉS</h5>
-            </div>
-            <div class="modal-body">
-              <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
-                <div class="form-group">
-                  <label for="emailInput">E-mail cím</label>
-                  <input type="email" class="form-control" id="emailInput" name="email" placeholder="abc@xyz.com" ngModel required/>
-                </div>
-                <div class="form-group">
-                  <label for="passwordInput">Jelszó</label>
-                  <input type="password" class="form-control" id="passwordInput" name="password" ngModel required/>
-                </div>
-                <div class="row">
-                  <a class="col-3" routerLink="/register" (click)="navigate($event)" data-dismiss="modal">Regisztáció</a>
-                  <div class="col-3"></div>
-                  <a class="col-6" routerLink="/reset-password" (click)="navigate($event)" data-dismiss="modal">Jelszavam elfelejtve</a>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" #closeButton class="btn btn-secondary" data-dismiss="modal">Bezár</button>
-                  <a href="#">
-                    <button type="submit" class="btn btn-primary">Bejelenkezés</button>
-                  </a>
-                </div>
-                <div class="row">
-                  <div class="col-sm">
-                    <p class="text-center" *ngIf="errorChecker === true">Nem megfelelő felhasználói adatok!</p>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      </form> -->
+    <!--LOGIN BUTTON-->
+    <div class="navbar-nav">
+      <a
+        href="#"
+        class="nav-item nav-link"
+        data-toggle="modal"
+        data-target="#loginCenter"
+        *ngIf="!getLoggedIn"
+      >
+        Bejelenkezés
+      </a>
+      <p class="navbar-text" *ngIf="getLoggedIn">
+        Bejelentkezve: {{ getLoggedInUser.name }} (
+        {{ getLoggedInUser.nickName }} )
+      </p>
+      <a
+        href=""
+        id="logOutButton"
+        class="nav-item nav-link"
+        *ngIf="getLoggedIn"
+        (click)="logOut()"
+        >Kijelentkezés</a
+      >
     </div>
-  </nav>
 
-  <!--AUTHORIZATION CONFLICT MODAL-->
-  <div class="modal fade" id="loginWarnModal" *ngIf="!getLoggedIn">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">HOPPÁ!</h5>
-        </div>
-        <div class="modal-body">
-          <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
-          <a href="#">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginCenter">Bejelentkezés</button>
-          </a>
+    <div class="modal fade" id="loginCenter">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">BEJELENKEZÉS</h5>
+          </div>
+          <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
+              <div class="form-group">
+                <label for="emailInput">E-mail cím</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="emailInput"
+                  name="email"
+                  placeholder="abc@xyz.com"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="passwordInput">Jelszó</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passwordInput"
+                  name="password"
+                  ngModel
+                  required
+                />
+              </div>
+              <div class="row">
+                <a
+                  class="col-3"
+                  routerLink="/register"
+                  (click)="navigate($event)"
+                  data-dismiss="modal"
+                  >Regisztáció</a
+                >
+                <div class="col-3"></div>
+                <a
+                  class="col-6"
+                  routerLink="/reset-password"
+                  (click)="navigate($event)"
+                  data-dismiss="modal"
+                  >Jelszavam elfelejtve</a
+                >
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  #closeButton
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Bezár
+                </button>
+                <a href="#">
+                  <button type="submit" class="btn btn-primary">
+                    Bejelenkezés
+                  </button>
+                </a>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <p class="text-center" *ngIf="errorChecker === true">
+                    Nem megfelelő felhasználói adatok!
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</nav>
+
+<!--AUTHORIZATION CONFLICT MODAL-->
+<div class="modal fade" id="loginWarnModal" *ngIf="!getLoggedIn">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HOPPÁ!</h5>
+      </div>
+      <div class="modal-body">
+        <p>Ahhoz hogy rendelni tudj az oldalunkról, be kell jelentkezned.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Ok
+        </button>
+        <a href="#">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-dismiss="modal"
+            data-toggle="modal"
+            data-target="#loginCenter"
+          >
+            Bejelentkezés
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
